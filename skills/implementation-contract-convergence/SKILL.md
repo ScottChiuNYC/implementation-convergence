@@ -1,6 +1,8 @@
 ---
 name: implementation-contract-convergence
-description: Converge free-form implementation intent or a draft Essence into a frozen, unambiguous implementation contract through semantic coverage checking, independent audits, reconciliation, bounded remediation, and owner escalation only when a material choice cannot be determined. Use when the user wants to turn design discussion, requirements, or an existing Essence into an implementation-ready frozen contract, or asks to audit, refine, converge, or freeze an Essence. Do not use to implement code from a frozen contract.
+description: Manually invoked workflow that converges free-form implementation intent or a draft Essence into a frozen, unambiguous implementation contract through semantic coverage checking, independent audits, reconciliation, bounded remediation, and narrow owner escalation.
+user-invocable: true
+disable-model-invocation: true
 ---
 
 # Implementation Contract Convergence
@@ -8,6 +10,21 @@ description: Converge free-form implementation intent or a draft Essence into a 
 Converge implementation intent into a standalone frozen contract that an independent implementer can execute without making a material product, model, or architecture decision on the owner's behalf.
 
 The contract may intentionally leave implementation freedom when all allowed choices are materially equivalent.
+
+## Activation boundary
+
+This is a human-triggered workflow.
+
+Do not start this skill merely because a conversation or draft appears ready for convergence. Require explicit human invocation.
+
+Platform metadata enforces this boundary where supported:
+
+- Copilot and VS Code: disable-model-invocation in SKILL.md;
+- Codex and OpenAI: agents/openai.yaml sets allow_implicit_invocation to false.
+
+Once the human starts the skill, the internal audit, reconciliation, remediation, and re-audit loop may proceed autonomously until FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker.
+
+Subagents spawned inside the workflow are role workers. They do not recursively invoke this skill.
 
 ## Inputs
 
@@ -34,20 +51,35 @@ Read references/semantic-coverage.md and perform both directions:
 
 Repair ordinary omissions or distortions before formal audit. Preserve genuine unresolved choices as unresolved; do not guess.
 
+## Select durable backend
+
+Before the first formal round:
+
+1. read references/state-model.md;
+2. read references/backend-selection.md;
+3. select exactly one backend for the run;
+4. load only the selected backend reference:
+   - local: references/backend-local.md
+   - GitHub: references/backend-github.md
+
+The backend controls durable transport and integration mechanics only. It does not change audit semantics, role authority, or the definition of PASS.
+
 ## Formal convergence loop
 
 When the candidate Essence is ready for formal audit:
 
-1. establish the exact candidate and repository/workspace authority being audited;
-2. create or update the adjacent human-readable audit journal;
+1. establish the exact candidate and repository or workspace authority being audited;
+2. create or update durable run state and the human-readable audit journal;
 3. run fresh independent Auditor slots against the same immutable target;
-4. after every required Auditor result is sealed, run a fresh Reconciler;
-5. follow exactly one transition:
+4. durably seal every required raw result;
+5. after every required Auditor result is sealed, run a fresh Reconciler;
+6. durably persist the canonical reconciliation;
+7. follow exactly one transition:
    - PASS -> FREEZE
    - FAIL + no owner decision -> REMEDIATE -> fresh audit
    - FAIL + owner decision -> WAITING_FOR_OWNER
-6. after remediation, audit the new exact target from scratch;
-7. stop only at verified freeze, WAITING_FOR_OWNER, or a fail-closed execution blocker.
+8. after remediation, establish a new immutable target and audit it from scratch;
+9. stop only at verified FROZEN, WAITING_FOR_OWNER, or a fail-closed execution blocker.
 
 Use references/execution-policy.md for independence and target rules.
 
@@ -58,9 +90,9 @@ Load the role reference only when that role is active:
 - Auditor: references/auditor.md
 - Reconciler: references/reconciler.md
 - Remediator: references/remediator.md
-- Freeze / owner handoff: references/freeze-and-handoff.md
+- Freeze and owner handoff: references/freeze-and-handoff.md
 
-The coordinating/root agent owns workflow transitions and durable bookkeeping. It must not substitute its own substantive judgment for an Auditor, Reconciler, or owner decision.
+The coordinating or root agent owns workflow transitions and durable bookkeeping. It must not substitute its own substantive judgment for an Auditor, Reconciler, or owner decision.
 
 ## What counts as a blocker
 
@@ -107,7 +139,7 @@ Do not loop forever.
 If materially the same canonical blocker survives two consecutive remediation attempts, diagnose whether the cause is:
 
 - a missing owner decision;
-- an execution/tooling limitation;
+- an execution or tooling limitation;
 - remediation that failed to implement the canonical finding.
 
 Then stop at the appropriate durable boundary rather than repeating the same round indefinitely.
@@ -116,11 +148,11 @@ Then stop at the appropriate durable boundary rather than repeating the same rou
 
 Success means all of the following are true:
 
-- the Essence is explicitly frozen / implementation-ready;
+- the Essence is explicitly frozen or implementation-ready;
 - the latest formal round is reconciled PASS;
 - the freeze corresponds to the exact audited authority state;
 - there are no unresolved owner decisions;
-- the audit journal records enough provenance to reconstruct the convergence history;
+- durable backend state and the audit journal preserve enough provenance to reconstruct the convergence history;
 - the frozen Essence itself contains all normative implementation authority needed by the next stage.
 
 Audit history is provenance, not hidden implementation authority.
