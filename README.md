@@ -13,6 +13,7 @@ skills/implementation-contract-convergence/ converges free-form implementation i
 Its loop is:
 
     human explicit trigger
+    -> compatibility gate
     -> conversation or draft Essence
     -> semantic coverage
     -> backend selection
@@ -25,7 +26,26 @@ Its loop is:
 
 Owner escalation occurs only after canonical reconciliation proves that a material choice cannot be determined from current authority.
 
-This skill is intentionally manual-only at the outer boundary. An agent should not decide on its own that a discussion is ready to enter contract convergence. Once a human invokes it, the internal loop may run autonomously until FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker.
+This skill is intentionally manual-only at the outer boundary. An agent should not decide on its own that a discussion is ready to enter contract convergence. Once a human invokes it and the host passes the compatibility gate, the internal loop may run autonomously until FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker.
+
+#### Hard compatibility
+
+A formal run requires an agent host that can:
+
+- launch fresh, sufficiently isolated subagents or workers;
+- prevent sibling Auditor findings from leaking before sealing;
+- provide durable shared run state through the selected backend;
+- reconstruct the run after interruption;
+- bind formal rounds to immutable target identities.
+
+If these conditions are not met, the host may help draft or review an Essence, but it must not claim a formal convergence PASS or freeze.
+
+The compatibility rule is capability-based rather than tied to product names. In current intended usage:
+
+- VS Code Copilot or local Codex normally use the local backend when they have persistent shared filesystem state, git, and isolated workers;
+- Codex may use either backend depending on its execution environment;
+- ChatGPT Work or another cloud/mobile-oriented host should use the GitHub backend when isolated workers are available but durable local state is not guaranteed;
+- ordinary chat without fresh isolated worker capability is not a compatible formal host.
 
 ### Contract-to-Code Convergence
 
@@ -63,6 +83,18 @@ Or invoke the same skill explicitly with this request when remote GitHub transpo
 
 The skill's agents/openai.yaml sets policy.allow_implicit_invocation to false, so Codex should not implicitly enter this workflow.
 
+### ChatGPT Work
+
+The OpenAI skill metadata exposes this skill to both CHAT and CODEX while keeping implicit invocation disabled.
+
+Invoke it explicitly in Work, for example:
+
+    Use the Implementation Contract Convergence skill on docs/model/ESSENCE.md. Use the GitHub backend.
+
+Do not select the local backend merely because Work exposes a cloud computer or writable filesystem. Use local only when the host can establish the local durability contract in references/backend-local.md. Otherwise, when Work has fresh isolated workers plus the required GitHub connector capabilities, use the GitHub backend.
+
+A normal ChatGPT conversation that cannot launch fresh isolated workers does not pass the formal compatibility gate.
+
 ### GitHub Copilot in VS Code
 
 GitHub Copilot recognizes .agents/skills/ as a project skill location. It also supports personal skills under ~/.agents/skills/ or ~/.copilot/skills/.
@@ -94,15 +126,17 @@ The protocol is backend-neutral:
 
 ### Local backend
 
-Use for VS Code Copilot, local Codex, or another host with filesystem read/write, git, and fresh isolated subagents or workers.
+Use for VS Code Copilot, local Codex, or another host with persistent shared filesystem read/write, git, and fresh isolated subagents or workers.
 
 Raw Auditor results, reconciliation, owner-decision state, and remediation state live in local runtime files. The tracked ESSENCE_AUDIT.md remains the concise human journal.
+
+A temporary cloud filesystem is not enough. The local backend requires durable shared run state that survives the expected convergence and recovery lifecycle.
 
 The default posture is handoff-only: converge and freeze on an isolated branch or worktree, then stop for human review rather than merging automatically.
 
 ### GitHub backend
 
-Use when the host has GitHub Issue and PR mutation plus readback and remote durable collaboration is desired.
+Use when the host has GitHub Issue and PR mutation plus readback and remote persistence or collaboration is desired.
 
 Use a round-control Issue, one sealed raw-result Issue per Auditor slot, a reconciliation record, durable owner-decision records, focused remediation branch and PR, and exact-SHA validation and readback.
 
@@ -154,6 +188,7 @@ Everything else should earn its place based on the needs of these skills.
 - Do not couple the two skills merely because they share a repository.
 - Keep protocol semantics backend-neutral.
 - Human activation gates the outer workflow; automation belongs inside the activated workflow.
+- Verify host compatibility before formal execution.
 - Prefer a small shared infrastructure layer.
 - Use normal feature branches and pull requests for broad or structural changes.
 - Use Remote Safe Patch only for narrow single-file exact edits.
