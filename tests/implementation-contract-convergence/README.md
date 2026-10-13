@@ -17,7 +17,11 @@ The first useful scenarios should cover:
 11. explicit Copilot slash invocation -> manual-only policy permits the run;
 12. local and GitHub backends represent the same logical round, finding, decision, and freeze semantics;
 13. local runtime files remain outside the audited git snapshot;
-14. missing fresh isolated workers -> no formal multi-Auditor PASS;
-15. backend interruption -> recover from durable state or fail closed without reconstructing raw evidence from memory.
+14. missing fresh isolated workers -> compatibility gate rejects formal execution and no formal PASS or freeze is possible;
+15. shared worker isolation cannot be established -> compatibility gate fails closed;
+16. temporary cloud filesystem with unproven durability -> local backend is rejected;
+17. cloud or connector-oriented host with isolated workers and complete GitHub capabilities -> GitHub backend is selected;
+18. backend interruption -> recover from durable state or fail closed without reconstructing raw evidence from memory;
+19. OpenAI packaging exposes the skill to CHAT and CODEX while implicit invocation remains disabled.
 
 Do not add orchestration infrastructure merely to make these tests look automated. Start with the smallest fixture format that can expose real skill failures.
