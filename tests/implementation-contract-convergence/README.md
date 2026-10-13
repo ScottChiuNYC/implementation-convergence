@@ -10,6 +10,7 @@ The first useful scenarios should cover:
 4. stylistic or non-material preference -> no formal blocker;
 5. substantive change after PASS -> freeze rejected until fresh audit;
 6. hidden conversation dependency -> formal blocker;
-7. unsupported material invention during drafting -> caught by semantic coverage.
+7. unsupported material invention during drafting -> caught by semantic coverage;
+8. owner-configured Auditor slot count -> journal and reconciliation remain slot-neutral.
 
 Do not add orchestration infrastructure merely to make these tests look automated. Start with the smallest fixture format that can expose real skill failures.
