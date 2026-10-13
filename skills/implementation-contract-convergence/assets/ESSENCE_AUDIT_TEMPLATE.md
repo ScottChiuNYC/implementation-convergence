@@ -13,9 +13,8 @@ This file is a human-readable provenance journal. It is not normative implementa
 
 - Target: <immutable identity>
 - Auditor results:
-  - A: PASS | FAIL | INVALID
-  - B: PASS | FAIL | INVALID
-  - C: PASS | FAIL | INVALID
+  - <slot-id>: PASS | FAIL | INVALID
+  - <repeat for every configured slot>
 - Canonical findings: <IDs or none>
 - Closed findings: <IDs or none>
 - Owner decisions: <IDs or none>
