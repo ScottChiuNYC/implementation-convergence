@@ -1,6 +1,7 @@
 ---
 name: implementation-contract-convergence
 description: Manually invoked workflow that converges free-form implementation intent or a draft Essence into a frozen, unambiguous implementation contract through semantic coverage checking, independent audits, reconciliation, bounded remediation, and narrow owner escalation.
+compatibility: Requires a host that can launch fresh isolated subagents or workers and provide durable shared run state. Local backend also requires persistent filesystem read/write and git; GitHub backend requires repository, Issue, branch, PR, and exact-SHA read/write and readback capabilities.
 user-invocable: true
 disable-model-invocation: true
 ---
@@ -25,6 +26,20 @@ Platform metadata enforces this boundary where supported:
 Once the human starts the skill, the internal audit, reconciliation, remediation, and re-audit loop may proceed autonomously until FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker.
 
 Subagents spawned inside the workflow are role workers. They do not recursively invoke this skill.
+
+## Compatibility gate
+
+Before doing any formal convergence work, verify that the host can satisfy all hard requirements:
+
+1. launch the configured number of fresh, sufficiently isolated Auditor workers;
+2. keep sibling Auditor findings hidden from one another until each result is sealed;
+3. launch a fresh Reconciler and a separate Remediator when required;
+4. provide durable shared run state through one selected backend so a fresh coordinator can reconstruct the run after interruption;
+5. bind every formal round to an immutable target identity.
+
+If any hard requirement is unavailable or cannot be established, stop with an incompatible-host or execution blocker. Do not simulate independent Auditors in one shared context, do not claim formal PASS, and do not freeze the Essence.
+
+An incompatible host may still help draft an Essence or perform an advisory review outside this formal skill.
 
 ## Inputs
 
