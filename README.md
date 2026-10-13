@@ -99,13 +99,13 @@ A normal ChatGPT conversation that cannot launch fresh isolated workers does not
 
 GitHub Copilot recognizes .agents/skills/ as a project skill location. It also supports personal skills under ~/.agents/skills/ or ~/.copilot/skills/.
 
-Invoke the skill from VS Code chat with the slash command:
+Invoke the skill explicitly from VS Code chat or Copilot CLI with:
 
     /implementation-contract-convergence Converge docs/model/ESSENCE.md using the local backend.
 
-The SKILL.md frontmatter sets user-invocable to true and disable-model-invocation to true, so the skill appears for explicit user invocation but is not automatically loaded by the model.
+The canonical SKILL.md keeps portable Agent Skills frontmatter. The manual-only rule is therefore enforced by the skill body itself rather than by GitHub-specific top-level metadata.
 
-For Copilot CLI, the same slash-command form applies after the skill is installed or discovered.
+For a Copilot-only vendored copy, GitHub also supports the non-portable frontmatter extensions user-invocable: true and disable-model-invocation: true as an additional client-side guard. Do not add those extensions to the canonical portable SKILL.md.
 
 ## Backends
 
