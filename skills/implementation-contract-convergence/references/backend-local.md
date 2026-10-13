@@ -1,6 +1,17 @@
 # Local Backend
 
-Use this backend for IDE agents and local coding agents that have filesystem, git, and fresh subagent capability but do not need GitHub Issues as workflow transport.
+Use this backend for IDE agents and local coding agents that have filesystem, git, and fresh subagent capability and do not need GitHub Issues as workflow transport.
+
+## Local durability contract
+
+The local backend is valid only when:
+
+- the coordinator and required fresh workers can access the same run-state root;
+- runtime records persist for the full convergence run;
+- the host provides a reliable resume or recovery path for that state when the workflow may be interrupted;
+- git identities used as formal targets remain available and verifiable.
+
+A temporary filesystem, task container, or cloud computer does not qualify merely because files can be written to it. If persistence or shared access cannot be established, do not select local; use another supported backend or fail closed.
 
 ## Local runtime state
 
