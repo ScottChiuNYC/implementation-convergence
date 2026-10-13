@@ -2,8 +2,6 @@
 name: implementation-contract-convergence
 description: Manually invoked workflow that converges free-form implementation intent or a draft Essence into a frozen, unambiguous implementation contract through semantic coverage checking, independent audits, reconciliation, bounded remediation, and narrow owner escalation.
 compatibility: Requires a host that can launch fresh isolated subagents or workers and provide durable shared run state. Local backend also requires persistent filesystem read/write and git; GitHub backend requires repository, Issue, branch, PR, and exact-SHA read/write and readback capabilities.
-user-invocable: true
-disable-model-invocation: true
 ---
 
 # Implementation Contract Convergence
@@ -16,12 +14,9 @@ The contract may intentionally leave implementation freedom when all allowed cho
 
 This is a human-triggered workflow.
 
-Do not start this skill merely because a conversation or draft appears ready for convergence. Require explicit human invocation.
+Do not start this skill merely because a conversation or draft appears ready for convergence. Require explicit human invocation: the human must name this skill, use the host's explicit skill command, or otherwise directly instruct the agent to run Implementation Contract Convergence.
 
-Platform metadata enforces this boundary where supported:
-
-- Copilot and VS Code: disable-model-invocation in SKILL.md;
-- Codex and OpenAI: agents/openai.yaml sets allow_implicit_invocation to false.
+OpenAI packaging also sets agents/openai.yaml policy.allow_implicit_invocation to false. Other hosts may provide their own invocation controls; those controls are defense in depth, while this in-skill activation rule remains authoritative.
 
 Once the human starts the skill, the internal audit, reconciliation, remediation, and re-audit loop may proceed autonomously until FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker.
 
