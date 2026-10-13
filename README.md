@@ -53,14 +53,12 @@ During v0.1 development, prefer a deliberate copy, vendor, or sync step from thi
 
 OpenAI documents repo-local Codex skills under .agents/skills/.
 
-After the skill is present in the target repository, invoke it explicitly:
+After the skill is present in the target repository, invoke `$implementation-contract-convergence` explicitly, for example:
 
-    $implementation-contract-convergence
     Converge docs/model/ESSENCE.md using the local backend.
 
-Or, when remote GitHub transport is desired and the required GitHub capabilities are available:
+Or invoke the same skill explicitly with this request when remote GitHub transport is desired and the required GitHub capabilities are available:
 
-    $implementation-contract-convergence
     Converge docs/model/ESSENCE.md using the GitHub backend.
 
 The skill's agents/openai.yaml sets policy.allow_implicit_invocation to false, so Codex should not implicitly enter this workflow.
