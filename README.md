@@ -9,7 +9,7 @@ This repository is intentionally clean before skill authoring begins.
 - **Implementation Contract Convergence** — planned skill for converging implementation intent into a frozen, unambiguous implementation contract.
 - **Contract-to-Code Convergence** — planned skill for converging a frozen implementation contract into verified code.
 
-The skill contracts and internal protocols have not been imported from ART or Steward. They will be designed deliberately in this repository rather than inherited as accidental authority.
+The skill contracts and internal protocols have not been imported. They will be designed deliberately in this repository rather than inherited as accidental authority.
 
 ## Retained repository infrastructure
 

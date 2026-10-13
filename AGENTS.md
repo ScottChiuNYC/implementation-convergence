@@ -9,7 +9,7 @@ Before modifying the repository, read:
 1. `README.md`
 2. the files for the skill or infrastructure capability being changed
 
-Do not infer skill semantics from old ART or Steward conventions. If a skill contract is not present in this repository, treat it as not yet defined.
+Do not infer skill semantics from external or legacy conventions. If a skill contract is not present in this repository, treat it as not yet defined.
 
 ## Working rules
 
