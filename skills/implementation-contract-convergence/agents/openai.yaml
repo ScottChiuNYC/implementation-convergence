@@ -1,0 +1,9 @@
+interface:
+  display_name: "Implementation Contract Convergence"
+  short_description: "Converge implementation intent into a frozen contract"
+  default_prompt: "Converge the selected implementation intent or Essence into a frozen, implementation-ready contract. Preserve owner authority, use the appropriate durable backend, and stop only at FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker."
+
+policy:
+  products:
+    - CODEX
+  allow_implicit_invocation: false
