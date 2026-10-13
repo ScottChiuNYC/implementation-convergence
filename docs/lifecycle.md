@@ -6,6 +6,9 @@ This repository contains two related but independently usable skills.
             |
             | human explicit invocation
             v
+    compatibility gate
+            |
+            v
     Implementation Contract Convergence
             |
             | local or GitHub durable backend
@@ -29,6 +32,8 @@ Drafted as v0.1 under skills/implementation-contract-convergence/.
 
 It owns:
 
+- explicit human activation;
+- host compatibility verification;
 - conversation or draft -> initial Essence coverage;
 - backend-neutral durable workflow state;
 - local and GitHub transport selection;
@@ -38,7 +43,9 @@ It owns:
 - narrow owner escalation;
 - verified freeze.
 
-The outer workflow is human-triggered. Internal convergence may run autonomously after explicit invocation.
+The outer workflow is human-triggered. Internal convergence may run autonomously after explicit invocation and a successful compatibility gate.
+
+A formal run requires fresh sufficiently isolated workers plus durable shared state. A filesystem that is merely available inside a temporary cloud execution environment is not sufficient evidence for the local backend.
 
 ### Contract-to-Code Convergence
 
