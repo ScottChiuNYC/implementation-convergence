@@ -1,0 +1,14 @@
+# Generated / transient / clearly non-reviewable content
+build/
+dist/
+.git/
+ref/transcripts/
+__pycache__/
+*.pyc
+.github/safe-patch-request/
+.github/reference-ingestion-request/
+
+# Review-complete policy while the shared AI workflow is still emerging:
+# tracked semantic and operational content stays visible in the CodeBinder PDF,
+# including AGENTS.md, .github/, bootstrap/, tools/, and docs/workflow/.
+# Do not exclude a tracked path merely because its primary reader is an AI agent.
