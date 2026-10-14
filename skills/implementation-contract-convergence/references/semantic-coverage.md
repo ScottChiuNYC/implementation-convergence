@@ -4,6 +4,8 @@ Use this step before formal audit when the input includes a free-form conversati
 
 Its purpose is faithful compression, not premature requirements management.
 
+Read `essence.md` first so coverage is judged against the same materiality and completeness standard used by formal audit.
+
 ## Rule
 
 Keep the source conversation free-form. Structure only when producing the candidate Essence.

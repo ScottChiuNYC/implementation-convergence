@@ -23,6 +23,8 @@ The first useful scenarios should cover:
 17. temporary cloud filesystem with unproven durability -> local backend is rejected;
 18. cloud or connector-oriented host with isolated workers and complete GitHub capabilities -> GitHub backend is selected;
 19. backend interruption -> recover from durable state or fail closed without reconstructing raw evidence from memory;
-20. OpenAI packaging exposes the skill to CHAT and CODEX while implicit invocation remains disabled.
+20. OpenAI packaging exposes the skill to CHAT and CODEX while implicit invocation remains disabled;
+21. a fresh Auditor with no prior ART or Steward context can reconstruct what an Essence is and apply the same material-completeness and freeze standard from `references/essence.md`;
+22. a domain-specific Essence may omit non-applicable completeness dimensions without being forced into a fixed template, while any omitted material dimension remains a blocker.
 
 Do not add orchestration infrastructure merely to make these tests look automated. Start with the smallest fixture format that can expose real skill failures.
