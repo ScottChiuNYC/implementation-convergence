@@ -26,6 +26,8 @@ Its loop is:
 
 Owner escalation occurs only after canonical reconciliation proves that a material choice cannot be determined from current authority.
 
+An **Essence** is the durable, normative, implementation-ready contract for one implementation scope. It is not a conversation summary: it is sufficient when fresh independent implementers can produce materially equivalent in-scope outcomes without inventing unstated material decisions. The portable definition and completeness standard lives in `skills/implementation-contract-convergence/references/essence.md`.
+
 This skill is intentionally manual-only at the outer boundary. An agent should not decide on its own that a discussion is ready to enter contract convergence. Once a human invokes it and the host passes the compatibility gate, the internal loop may run autonomously until FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker.
 
 #### Hard compatibility
@@ -152,6 +154,7 @@ See the backend references inside the skill for full rules.
         agents/
           openai.yaml
         references/
+          essence.md
           semantic-coverage.md
           state-model.md
           backend-selection.md
