@@ -46,13 +46,18 @@ Accept any of these starting points:
 
 Use current owner instructions and current repository authority. Do not silently import stale chat history or legacy protocol as authority.
 
-The final Essence must stand on its own. Formal audit must not depend on hidden conversation context.
+The effective implementation contract must be reconstructible from durable repository authority without hidden conversation context. It consists of the Essence plus the established Project Boundary.
 
-Before drafting, semantic coverage, remediation, or formal audit, read `references/essence.md`. It defines what an Essence is, what counts as material completeness, and the implementation-ready standard used by this skill.
+Before drafting, semantic coverage, remediation, or formal audit, read both:
+
+- `references/essence.md` — what the Essence owns and what implementation-ready means;
+- `references/project-boundary.md` — what the component may assume is already provided and how to keep boundary-owned mechanics out of Essence scope.
 
 ## Entry: draft and semantic coverage
 
-If no Essence exists, draft the initial Essence from the available design context.
+Before drafting or auditing, identify the Project Boundary from current durable repository authority.
+
+If no Essence exists, draft the initial Essence from the available design context while keeping boundary-owned mechanics outside its responsibility.
 
 If an Essence exists and the current conversation or owner-designated notes contain relevant decisions, compare them before formal audit.
 
@@ -80,7 +85,7 @@ The backend controls durable transport and integration mechanics only. It does n
 
 When the candidate Essence is ready for formal audit:
 
-1. establish the exact candidate and repository or workspace authority being audited;
+1. establish the exact candidate Essence, its Project Boundary, and the repository or workspace authority being audited;
 2. create or update durable run state and the human-readable audit journal;
 3. run fresh independent Auditor slots against the same immutable target;
 4. durably seal every required raw result;
@@ -97,7 +102,7 @@ Use references/execution-policy.md for independence and target rules.
 
 ## Role boundaries
 
-`references/essence.md` is the shared contract-definition standard for drafting, remediation, and audit.
+`references/essence.md` and `references/project-boundary.md` are the shared contract-definition standards for drafting, remediation, and audit.
 
 Load the role reference only when that role is active:
 
@@ -115,6 +120,7 @@ A formal finding must be capable of changing a materially protected implementati
 Typical blockers include:
 
 - contradictory normative requirements;
+- an unclear Project Boundary that leaves ownership or assumed capabilities materially ambiguous;
 - missing behavior that forces the implementer to choose among materially different outcomes;
 - ambiguous scope, state transition, interface, numerical convention, error behavior, data ownership, or acceptance condition;
 - an unstated assumption whose alternatives materially change implementation;
@@ -126,6 +132,7 @@ These are not blockers by themselves:
 - naming taste;
 - unspecified private code shape;
 - implementation freedom where compliant choices are materially equivalent;
+- missing internal detail that is already unambiguously owned by the established Project Boundary;
 - a reviewer's preference for additional explanation that does not affect implementation behavior.
 
 ## Owner barrier
@@ -167,7 +174,7 @@ Success means all of the following are true:
 - the freeze corresponds to the exact audited authority state;
 - there are no unresolved owner decisions;
 - durable backend state and the audit journal preserve enough provenance to reconstruct the convergence history;
-- the frozen Essence itself contains all normative implementation authority needed by the next stage.
+- the frozen Essence identifies its responsibility and Project Boundary clearly enough that the effective implementation contract is reconstructible by the next stage.
 
 Audit history is provenance, not hidden implementation authority.
 

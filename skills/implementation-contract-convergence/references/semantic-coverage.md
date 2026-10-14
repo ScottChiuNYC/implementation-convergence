@@ -4,7 +4,7 @@ Use this step before formal audit when the input includes a free-form conversati
 
 Its purpose is faithful compression, not premature requirements management.
 
-Read `essence.md` first so coverage is judged against the same materiality and completeness standard used by formal audit.
+Read `essence.md` and `project-boundary.md` first so coverage is judged against the same materiality, responsibility, and completeness standard used by formal audit.
 
 ## Rule
 
@@ -25,7 +25,9 @@ Identify every implementation-material item established by the source:
 - explicit tradeoffs and rejected alternatives;
 - unresolved choices that remain genuinely unresolved.
 
-For each item, verify that the candidate Essence represents it without weakening, strengthening, or changing its meaning.
+For each item, first classify whether it belongs to this component's Essence or is already owned by the established Project Boundary.
+
+Verify that Essence-owned material is represented without weakening, strengthening, or changing its meaning. Do not copy boundary-owned mechanics into the Essence merely for completeness.
 
 ### Essence -> source
 
@@ -34,7 +36,7 @@ Inspect every material requirement in the candidate Essence.
 Classify it as one of:
 
 - directly established by the source;
-- already established by current repository authority;
+- already established by the Project Boundary or other current repository authority;
 - a non-material editorial normalization;
 - unsupported material invention.
 
