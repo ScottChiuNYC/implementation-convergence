@@ -36,6 +36,8 @@ The generic model is intentionally only:
 
 An Essence may be physically split into referenced normative files for readability, but those files remain one Essence contract. The skill does not create a generic Dedicated Contract taxonomy. If specification pressure suggests a substantial reusable subsystem, treat that first as evidence to re-check the single-responsibility / project boundary rather than automatically adding another spec.
 
+For incremental development, an Essence belongs to a coherent responsibility rather than a milestone. Contract-preserving implementation changes leave the Essence frozen; material changes to the same responsibility reopen it; a genuinely new responsibility gets a new Essence. Formal audit remains bound to an exact repository SHA while its declared scope stays limited to the changed responsibility, affected interfaces, and relevant Project Boundary.
+
 This skill is intentionally manual-only at the outer boundary. An agent should not decide on its own that a discussion is ready to enter contract convergence. Once a human invokes it and the host passes the compatibility gate, the internal loop may run autonomously until FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker.
 
 #### Hard compatibility
@@ -164,6 +166,7 @@ See the backend references inside the skill for full rules.
         references/
           essence.md
           project-boundary.md
+          incremental-development.md
           semantic-coverage.md
           state-model.md
           backend-selection.md
