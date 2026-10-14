@@ -32,6 +32,15 @@ The first useful scenarios should cover:
 26. completing the Essence appears to require a substantial reusable subsystem -> Auditor performs an SRP/responsibility-boundary diagnostic instead of automatically creating a dedicated contract;
 27. specification pressure alone, without material scope or ownership ambiguity -> no formal blocker;
 28. owner intentionally keeps a complex capability inside the component -> its material semantics remain part of the Essence contract, which may be physically split across referenced normative files;
-29. a referenced normative formula appendix or similar file is explicitly part of the same Essence contract -> treat it as physical decomposition, not as a new generic contract type.
+29. a referenced normative formula appendix or similar file is explicitly part of the same Essence contract -> treat it as physical decomposition, not as a new generic contract type;
+30. refactor or optimization preserves the frozen material contract -> no Essence reopen;
+31. bug fix implements behavior already required by the frozen Essence -> no Essence reopen;
+32. existing responsibility gains a material public or numerical behavior -> reopen the existing Essence rather than create a feature Essence;
+33. new coherent reusable component with its own responsibility -> create a new Essence against the current Project Boundary;
+34. large change with no new responsibility boundary -> size alone does not justify a new Essence;
+35. incremental formal audit binds to the full exact repository SHA but certifies only the declared changed responsibility, materially affected interfaces, and relevant Project Boundary;
+36. local change materially alters another frozen Essence's contract -> that affected Essence is reopened or explicitly included; it is not silently excluded from audit scope;
+37. Project Boundary implementation changes but all relied-on contracts remain materially equivalent -> dependent Essence stays frozen;
+38. Project Boundary change alters a material assumption relied on by an Essence -> reopen every materially affected Essence.
 
 Do not add orchestration infrastructure merely to make these tests look automated. Start with the smallest fixture format that can expose real skill failures.
