@@ -25,6 +25,13 @@ The first useful scenarios should cover:
 19. backend interruption -> recover from durable state or fail closed without reconstructing raw evidence from memory;
 20. OpenAI packaging exposes the skill to CHAT and CODEX while implicit invocation remains disabled;
 21. a fresh Auditor with no prior ART or Steward context can reconstruct what an Essence is and apply the same material-completeness and freeze standard from `references/essence.md`;
-22. a domain-specific Essence may omit non-applicable completeness dimensions without being forced into a fixed template, while any omitted material dimension remains a blocker.
+22. a domain-specific Essence may omit non-applicable completeness dimensions without being forced into a fixed template, while any omitted material dimension remains a blocker;
+23. project build/test/package mechanics already fixed by a durable Project Boundary -> no Essence finding merely because they are absent from the Essence;
+24. Project Boundary exists only as an assumption in chat and is not reconstructible from durable repository authority -> formal blocker;
+25. a reusable library or framework is clearly boundary-owned -> Auditor checks the relied-on interaction but does not audit that dependency's internals as part of this Essence;
+26. completing the Essence appears to require a substantial reusable subsystem -> Auditor performs an SRP/responsibility-boundary diagnostic instead of automatically creating a dedicated contract;
+27. specification pressure alone, without material scope or ownership ambiguity -> no formal blocker;
+28. owner intentionally keeps a complex capability inside the component -> its material semantics remain part of the Essence contract, which may be physically split across referenced normative files;
+29. a referenced normative formula appendix or similar file is explicitly part of the same Essence contract -> treat it as physical decomposition, not as a new generic contract type.
 
 Do not add orchestration infrastructure merely to make these tests look automated. Start with the smallest fixture format that can expose real skill failures.
