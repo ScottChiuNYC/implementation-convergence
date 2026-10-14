@@ -2,7 +2,7 @@
 
 ## Definition
 
-An Essence is the durable, normative, implementation-ready contract for one implementation scope.
+An Essence is the durable, normative, implementation-ready contract for one implementation scope, interpreted against an established Project Boundary.
 
 Its purpose is not to summarize a design conversation, preserve every research step, or prescribe private code shape. Its purpose is to remove material implementation ambiguity so that fresh independent implementers can produce materially equivalent in-scope outcomes without access to the originating conversation.
 
@@ -37,21 +37,55 @@ A choice is material when different reasonable choices can change an owner-prote
 
 Private implementation choices that cannot change a protected outcome are not material merely because multiple designs are possible.
 
+## Essence and Project Boundary
+
+The universal implementation model is deliberately small:
+
+```text
+effective implementation contract
+= Essence
++ Project Boundary
+```
+
+The **Essence** owns the material semantics of the component being built: its scope, behavior, domain rules, interfaces, invariants, failure semantics, acceptance evidence, and other implementation choices that belong to that component.
+
+The **Project Boundary** defines what the component may assume is already provided by its environment. Read `project-boundary.md` for the boundary standard.
+
+Typical boundary-owned concerns include existing repository layout, generic build/package/dependency plumbing, test and CI conventions, reusable libraries or frameworks, platform services, and other capabilities whose internal implementation is not this component's responsibility.
+
+The Project Boundary does not need to be a dedicated file. It may already be determinable from stable repository structure, policy, templates, or other durable project authority. It must, however, be explicit enough that an independent implementer can distinguish what this component owns from what it may assume.
+
+Do not duplicate boundary-owned mechanics into the Essence merely to make the Essence look self-contained. Conversely, do not push component-specific behavior into the Project Boundary to avoid specifying it.
+
+An Essence may be physically split into multiple referenced normative files when that improves readability, for example a large formula appendix. Such files remain parts of **one Essence contract**. This skill does not introduce a generic `Dedicated Contract` category.
+
+### Specification pressure and responsibility boundaries
+
+Specification pressure is architectural evidence, not automatic proof of bad design.
+
+If making the Essence complete appears to require specifying a substantial, self-contained capability with its own reusable purpose or lifecycle, first ask whether that capability is actually this component's responsibility.
+
+- If not, prefer extracting or using that capability behind the Project Boundary and specify only the interaction this component relies on.
+- If the owner intentionally keeps the capability in scope and the responsibility remains coherent, its material semantics stay inside the Essence contract, even if the Essence is physically split across files.
+- Do not create a new companion-spec category merely to absorb complexity.
+
+A large specification by itself is not a formal finding. A finding exists only when scope, ownership, or material behavior remains ambiguous enough to permit materially different outcomes.
+
 ## Authority
 
 The Essence must state or make determinable:
 
 - what scope it governs;
 - what it explicitly does not govern;
-- which durable repository authorities it imports or depends on;
-- which higher-authority constraints remain outside it;
-- how conflicts are resolved.
+- what Project Boundary it assumes;
+- which referenced normative files, if any, are physically part of the same Essence contract;
+- how conflicts inside the effective implementation contract are resolved.
 
-The frozen Essence is normative implementation authority for its scope.
+The frozen Essence is normative implementation authority for the component it owns. The established Project Boundary remains authoritative for boundary-owned concerns.
 
-Audit journals, raw Auditor findings, reconciliation records, remediation history, prompts, and the originating conversation are provenance or workflow evidence. They must not contain missing normative requirements that an implementer needs in order to reconstruct the contract.
+Audit journals, raw Auditor findings, reconciliation records, remediation history, prompts, and the originating conversation are provenance or workflow evidence. They must not contain missing normative requirements that an implementer needs in order to reconstruct the effective implementation contract.
 
-Do not duplicate long derivations or design documents that already have a canonical durable owner. Reference them and preserve in the Essence the implementation-critical consequences needed to remove ambiguity.
+Do not duplicate long derivations or design documents merely for completeness. If implementation-critical material belongs to the component, make it part of the Essence contract directly or through a referenced normative section/file. If it belongs to another component or reusable capability, place that responsibility behind the Project Boundary rather than inventing a new companion-contract taxonomy.
 
 ## Completeness dimensions
 
@@ -145,7 +179,7 @@ An unresolved item requires owner decision only when current durable authority n
 
 Before formal audit, simulate implementation phase by phase and ask:
 
-> If implementation started now, what material choice would still have to be invented because current durable authority does not determine or explicitly delegate it?
+> If implementation started now, what material choice would still have to be invented because neither the Essence nor the established Project Boundary determines it?
 
 Every surviving material answer is a contract gap.
 
