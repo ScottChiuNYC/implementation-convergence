@@ -2,7 +2,9 @@
 
 ## Mission
 
-Determine whether the exact candidate Essence is an unambiguous implementation contract.
+Read `essence.md` first. It defines the contract being audited and the implementation-ready completeness standard.
+
+Determine whether the exact candidate Essence satisfies that standard as an unambiguous implementation contract.
 
 Audit the whole assigned scope independently. Do not optimize for agreement with prior reviewers.
 
@@ -70,4 +72,4 @@ Complete the full audit even after finding something that may require an owner d
 
     You are Independent Auditor <slot> for formal audit round <N>.
     Audit the exact assigned candidate independently.
-    Read the skill's Auditor reference and return a sealed formal result.
+    Read references/essence.md and the skill's Auditor reference, then return a sealed formal result.
