@@ -2,9 +2,9 @@
 
 ## Mission
 
-Read `essence.md` first. It defines the contract being audited and the implementation-ready completeness standard.
+Read `essence.md` and `project-boundary.md` first. Together they define the contract standard and responsibility boundary being audited.
 
-Determine whether the exact candidate Essence satisfies that standard as an unambiguous implementation contract.
+Determine whether the exact candidate Essence, interpreted against the established Project Boundary, forms an unambiguous effective implementation contract.
 
 Audit the whole assigned scope independently. Do not optimize for agreement with prior reviewers.
 
@@ -23,9 +23,22 @@ If independence is materially compromised, report an execution blocker rather th
 
 ## Audit standard
 
-Ask whether an independent competent implementer can determine every materially consequential in-scope choice from the candidate and its explicitly imported durable authority.
+Ask whether an independent competent implementer can determine every materially consequential in-scope choice from:
+
+1. the Essence contract, including any normative files that are explicitly parts of that same contract; and
+2. the established Project Boundary.
+
+Do not demand that the Essence restate mechanics already fixed by the Project Boundary. Audit the component's assumptions and interactions at that boundary, not the internals of an independently owned reusable capability.
 
 Implementation freedom is allowed when all compliant choices remain materially equivalent.
+
+### Responsibility-boundary diagnostic
+
+Specification pressure is architectural evidence, not an automatic blocker.
+
+If completing the Essence seems to require a large self-contained subsystem, ask whether that subsystem is genuinely part of this component's responsibility or should instead exist behind the Project Boundary.
+
+Do not automatically propose a new dedicated specification. Raise a formal finding only when the current responsibility boundary is materially ambiguous or causes the effective contract to permit materially different outcomes.
 
 Look especially for:
 
@@ -72,4 +85,4 @@ Complete the full audit even after finding something that may require an owner d
 
     You are Independent Auditor <slot> for formal audit round <N>.
     Audit the exact assigned candidate independently.
-    Read references/essence.md and the skill's Auditor reference, then return a sealed formal result.
+    Read references/essence.md, references/project-boundary.md, and the skill's Auditor reference, then return a sealed formal result.
