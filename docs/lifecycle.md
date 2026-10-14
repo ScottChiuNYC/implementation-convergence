@@ -69,4 +69,25 @@ Audit history is provenance, not hidden implementation authority.
 
 Backend selection changes storage and integration mechanics only. It does not change the meaning of PASS, owner authority, Auditor independence, or freeze.
 
+## Incremental development
+
+An Essence belongs to a coherent implementation responsibility, not to a development milestone.
+
+Use the smallest contract action that matches the change:
+
+    contract-preserving implementation change
+    -> keep the existing Essence frozen
+
+    material change to the same responsibility
+    -> reopen and reconverge the existing Essence
+
+    new coherent responsibility or component
+    -> create a new Essence against the current Project Boundary
+
+Formal audit always binds to one exact immutable repository or workspace target, but an incremental round should certify only the smallest complete scope: the changed or new Essence responsibility, materially affected interfaces, and relevant Project Boundary.
+
+A Project Boundary change reopens dependent Essences only when it changes a material assumption they rely on.
+
+See `skills/implementation-contract-convergence/references/incremental-development.md` for the detailed classifier.
+
 Each skill should remain self-contained. Shared repository infrastructure should be introduced only when both skills genuinely require it.
