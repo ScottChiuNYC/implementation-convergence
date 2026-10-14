@@ -51,11 +51,14 @@ The effective implementation contract must be reconstructible from durable repos
 Before drafting, semantic coverage, remediation, or formal audit, read both:
 
 - `references/essence.md` — what the Essence owns and what implementation-ready means;
-- `references/project-boundary.md` — what the component may assume is already provided and how to keep boundary-owned mechanics out of Essence scope.
+- `references/project-boundary.md` — what the component may assume is already provided and how to keep boundary-owned mechanics out of Essence scope;
+- `references/incremental-development.md` — whether an incremental change needs no contract change, reopening an existing Essence, or a new Essence.
 
-## Entry: draft and semantic coverage
+## Entry: classify, draft, and check semantic coverage
 
 Before drafting or auditing, identify the Project Boundary from current durable repository authority.
+
+For incremental work on an existing project, first classify the change using `references/incremental-development.md`. Do not create a new Essence merely because a new milestone, feature, or release has started.
 
 If no Essence exists, draft the initial Essence from the available design context while keeping boundary-owned mechanics outside its responsibility.
 
@@ -85,7 +88,7 @@ The backend controls durable transport and integration mechanics only. It does n
 
 When the candidate Essence is ready for formal audit:
 
-1. establish the exact candidate Essence, its Project Boundary, and the repository or workspace authority being audited;
+1. establish the exact candidate Essence, declared audit scope, its Project Boundary, and the repository or workspace authority being audited;
 2. create or update durable run state and the human-readable audit journal;
 3. run fresh independent Auditor slots against the same immutable target;
 4. durably seal every required raw result;
@@ -145,7 +148,7 @@ Escalate only when canonical reconciliation establishes that current authority c
 
 ## Freeze rule
 
-A reconciled PASS authorizes freeze only for the exact audited authority state.
+A reconciled PASS authorizes freeze only for the exact audited authority state and declared audit scope.
 
 Freeze writeback is mechanical. It may mark status, record provenance, and update the audit journal, but it must not change substantive contract meaning.
 
