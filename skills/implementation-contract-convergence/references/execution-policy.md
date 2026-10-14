@@ -2,11 +2,13 @@
 
 ## Exact target
 
-Every formal round binds all Auditor slots to the same immutable candidate identity.
+Every formal round binds all Auditor slots to the same immutable candidate identity and the same declared audit scope.
 
 Prefer an exact git commit SHA when the Essence lives in a repository. Otherwise use the strongest immutable snapshot identity available.
 
-A PASS is valid only for that exact authority state.
+The audit scope identifies the responsibility being certified plus any materially affected interfaces and relevant Project Boundary. It may be narrower than the repository, but it must be complete for the material consequences of the change.
+
+A PASS is valid only for that exact authority state and declared audit scope.
 
 ## Auditor independence
 
@@ -48,4 +50,4 @@ Complete all configured Auditor slots before reconciliation.
 
 Do not terminate a round early because one Auditor found an owner decision.
 
-Do not silently substitute a new target after the round starts.
+Do not silently substitute a new target or change the declared audit scope after the round starts.
