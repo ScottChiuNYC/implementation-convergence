@@ -8,6 +8,8 @@ Its purpose is not to summarize a design conversation, preserve every research s
 
 A file named `ESSENCE.md` is the normal representation, but the concept is the contract itself, not the filename.
 
+An Essence belongs to a coherent implementation responsibility or scope, not to a sprint, release, feature branch, or development milestone. When a project evolves, reuse, reopen, or add an Essence according to `incremental-development.md` rather than creating a new project-wide specification for every increment.
+
 ## Core sufficiency test
 
 A candidate Essence is ready to freeze only when all three statements are true:
