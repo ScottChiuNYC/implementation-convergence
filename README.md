@@ -26,7 +26,15 @@ Its loop is:
 
 Owner escalation occurs only after canonical reconciliation proves that a material choice cannot be determined from current authority.
 
-An **Essence** is the durable, normative, implementation-ready contract for one implementation scope. It is not a conversation summary: it is sufficient when fresh independent implementers can produce materially equivalent in-scope outcomes without inventing unstated material decisions. The portable definition and completeness standard lives in `skills/implementation-contract-convergence/references/essence.md`.
+An **Essence** is the durable, normative, implementation-ready contract for one implementation scope. It is interpreted against an established **Project Boundary**: the durable environment and reusable capabilities the component may assume already exist. The portable standards live in `references/essence.md` and `references/project-boundary.md`.
+
+The generic model is intentionally only:
+
+    effective implementation contract
+    = Essence
+    + Project Boundary
+
+An Essence may be physically split into referenced normative files for readability, but those files remain one Essence contract. The skill does not create a generic Dedicated Contract taxonomy. If specification pressure suggests a substantial reusable subsystem, treat that first as evidence to re-check the single-responsibility / project boundary rather than automatically adding another spec.
 
 This skill is intentionally manual-only at the outer boundary. An agent should not decide on its own that a discussion is ready to enter contract convergence. Once a human invokes it and the host passes the compatibility gate, the internal loop may run autonomously until FROZEN, WAITING_FOR_OWNER, or a fail-closed blocker.
 
@@ -155,6 +163,7 @@ See the backend references inside the skill for full rules.
           openai.yaml
         references/
           essence.md
+          project-boundary.md
           semantic-coverage.md
           state-model.md
           backend-selection.md
