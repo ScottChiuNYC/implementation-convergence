@@ -48,6 +48,8 @@ Use current owner instructions and current repository authority. Do not silently
 
 The final Essence must stand on its own. Formal audit must not depend on hidden conversation context.
 
+Before drafting, semantic coverage, remediation, or formal audit, read `references/essence.md`. It defines what an Essence is, what counts as material completeness, and the implementation-ready standard used by this skill.
+
 ## Entry: draft and semantic coverage
 
 If no Essence exists, draft the initial Essence from the available design context.
@@ -97,6 +99,7 @@ Use references/execution-policy.md for independence and target rules.
 
 Load the role reference only when that role is active:
 
+- Essence definition and completeness standard: references/essence.md
 - Auditor: references/auditor.md
 - Reconciler: references/reconciler.md
 - Remediator: references/remediator.md
