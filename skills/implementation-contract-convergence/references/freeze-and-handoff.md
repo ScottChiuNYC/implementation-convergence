@@ -53,7 +53,7 @@ Audit reports, raw findings, reconciliation records, and remediation history are
 
 ## Reopen
 
-A frozen Essence reopens only for a material contract change.
+A frozen Essence reopens only for a material contract change to the responsibility it owns, including a material change in the Project Boundary assumptions that responsibility relies on.
 
 After reopening:
 
@@ -62,3 +62,9 @@ After reopening:
     -> fresh formal audit
     -> reconciled PASS
     -> new freeze
+
+Do not reopen for implementation-only changes that remain inside the frozen contract.
+
+Do not create a new Essence merely to avoid reopening an existing responsibility. Create a new Essence only when the increment introduces a genuinely new coherent responsibility or component.
+
+See `incremental-development.md` for the full classifier and incremental audit-scope rules.

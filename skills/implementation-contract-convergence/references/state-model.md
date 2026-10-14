@@ -12,21 +12,21 @@ Record at least the run identity, Essence locator, selected backend, current wor
 
 ### Formal round
 
-A formal round binds all Auditor slots to one immutable target.
+A formal round binds all Auditor slots to one immutable target and one declared audit scope.
 
-Record at least the round identity, exact target identity, configured Auditor slots, one raw-result locator per slot, reconciliation locator, round verdict, and next transition.
+Record at least the round identity, exact target identity, declared audit scope, configured Auditor slots, one raw-result locator per slot, reconciliation locator, round verdict, and next transition.
 
-The target identity must not change after the round begins.
+The target identity and declared audit scope must not change after the round begins.
 
 ### Raw Auditor result
 
-Each Auditor slot produces one sealed result containing the round identity, slot identity, exact target identity, verdict, complete substantive findings, available execution provenance, and sealed status.
+Each Auditor slot produces one sealed result containing the round identity, slot identity, exact target identity, declared audit scope, verdict, complete substantive findings, available execution provenance, and sealed status.
 
 A sealed result is immutable evidence. A substantive correction requires a fresh replacement slot or a fresh round with preserved provenance.
 
 ### Reconciliation
 
-Persist the round identity and exact target identity, every sealed raw-result identity, raw-to-canonical mappings or explicit dismissals, canonical findings, owner-decision items, round verdict, and next transition.
+Persist the round identity, exact target identity, declared audit scope, every sealed raw-result identity, raw-to-canonical mappings or explicit dismissals, canonical findings, owner-decision items, round verdict, and next transition.
 
 The next transition is REMEDIATE, WAITING_FOR_OWNER, or FREEZE.
 
