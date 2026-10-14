@@ -55,7 +55,15 @@ The placeholder directory exists only to make the intended repository shape expl
 
 ## Boundary
 
-The frozen Essence is the normative handoff artifact.
+The generic contract model is:
+
+    effective implementation contract
+    = Essence
+    + Project Boundary
+
+The frozen Essence is the normative handoff artifact for the component's own responsibility. The Project Boundary remains the durable authority for pre-existing repository mechanics and reusable capabilities outside that responsibility.
+
+An Essence may be physically decomposed into referenced normative files, but that does not create additional generic contract categories.
 
 Audit history is provenance, not hidden implementation authority.
 
