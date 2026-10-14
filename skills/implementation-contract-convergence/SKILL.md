@@ -97,9 +97,10 @@ Use references/execution-policy.md for independence and target rules.
 
 ## Role boundaries
 
+`references/essence.md` is the shared contract-definition standard for drafting, remediation, and audit.
+
 Load the role reference only when that role is active:
 
-- Essence definition and completeness standard: references/essence.md
 - Auditor: references/auditor.md
 - Reconciler: references/reconciler.md
 - Remediator: references/remediator.md
