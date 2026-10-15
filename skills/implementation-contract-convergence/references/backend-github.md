@@ -56,7 +56,7 @@ Then update round-control state mechanically.
 
 ## Owner decisions
 
-Persist owner-decision items durably.
+Persist owner-decision items durably. At owner handoff, also render all pending items, labeled alternatives, trade-offs and advisory recommendations in the conversation as required by `freeze-and-handoff.md`; an Issue link alone is insufficient.
 
 The human's actual resolution must be recorded before remediation proceeds across that decision boundary.
 
