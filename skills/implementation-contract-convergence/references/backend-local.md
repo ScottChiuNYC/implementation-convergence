@@ -55,20 +55,22 @@ Before a formal round:
 
 1. ensure the candidate Essence and every repository-authoritative dependency needed for the audit are represented by the target commit;
 2. record that commit SHA in round state;
-3. give every Auditor the same SHA;
+3. have the dispatcher verify the commit/tree and extract the same complete allowlisted authority at that SHA into checked packets;
 4. do not mutate that target while the round is active.
 
 If the workspace contains unrelated uncommitted work that prevents an exact target, isolate the convergence work in a branch or worktree, or stop rather than folding unrelated changes into the contract target.
 
 ## Auditor isolation
 
-Create fresh independent Auditor contexts.
+Create fresh independent Auditor contexts without inherited conversation. Follow `auditor-inputs.md` for dispatcher-only verification and input delivery. Deliver only allowlisted current authority and generic instructions, not the full checkout, git history, journal, or runtime directory. Scope filesystem/tool access when the host permits; disclose delivery-only isolation otherwise.
 
 The coordinator may write a result to the local runtime root only after that Auditor has sealed it.
 
 An Auditor must not receive sibling result paths or contents before sealing.
 
-Only the Reconciler reads all sealed results together.
+For contamination, preserve the invalid execution file and use a new execution-specific result file for a fresh worker in the same logical slot, target and scope. Record the replacement linkage and packet digest in round state. Do not pass the invalid worker's observations to its replacement.
+
+Only the Reconciler reads sealed results together, after every configured slot has a valid result for matching target/scope/input manifest. Invalid executions are excluded provenance, not verdicts. Coordinator persistence/readback responses never enter Auditor contexts.
 
 ## Remediation
 

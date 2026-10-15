@@ -16,6 +16,8 @@ Receive:
 
 Do not receive private Auditor reasoning or unsealed sibling work.
 
+Before substantive reconciliation, verify that every configured logical slot has a valid sealed execution bound to the same target, scope and input manifest, with its recorded packet digest. Invalid/contaminated executions cannot count toward completeness or contribute findings, verdicts or advisory observations. Record their exclusion and replacement identities as provenance only. If any slot lacks valid evidence, return an execution blocker and let the dispatcher recover it; do not manufacture a round verdict.
+
 ## Reconciliation procedure
 
 For every substantive raw finding:
@@ -55,5 +57,6 @@ A single Auditor PASS never establishes round PASS.
 ## Minimal kickoff
 
     You are the Reconciler for formal audit round <N>.
-    Read every sealed Auditor result for the exact target.
+    Verify a valid sealed execution for every configured slot at the exact target, scope and input manifest.
+    Exclude invalid executions and their observations, preserving exclusion provenance.
     Account for every substantive finding and produce one canonical round result.

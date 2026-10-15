@@ -1,6 +1,29 @@
 # Implementation Contract Convergence Tests
 
-This directory is reserved for behavioral fixtures and regression cases for the skill.
+This directory contains behavioral fixtures and regression cases for the skill.
+
+## Auditor input regression
+
+Run from the repository root:
+
+    python -m unittest discover -s tests/implementation-contract-convergence -p 'test_*.py'
+
+The synthetic fixture in `test_auditor_packet.py` reproduces a broad commit verification response containing an unrequested remediation patch alongside valid commit/tree metadata. No private project text is included. Tests exercise the optional dispatcher projection helper, exact identities/content hashes, allowlist completeness, backend parity, invalidation without a substantive/advisory verdict, and same-slot replacement identity checks. The existing PDF workflow runs these tests.
+
+These are automated data-boundary and result-binding checks, not proof of worker/tool isolation or an automated convergence runner. The dispatcher still reviews semantic permission and verifies tree membership. A digest cannot establish that a supplied file belongs to a commit or contains no forbidden reasoning.
+
+Manual forward-test fixtures for both backends:
+
+| Event | Required observable behavior |
+| --- | --- |
+| Dispatcher receives broad metadata plus prior-remediation patch | Raw response stays with dispatcher; new Auditor sees only checked authority/instructions and assignment. |
+| Auditor needs an absent normative appendix | Requests dispatcher input without fetching; changed manifest retires executions and rebinds all slots before acceptance. |
+| Forbidden tool-output spill reaches Auditor | Stops immediately, seals INVALID/null/empty findings, returns no advisory review. |
+| Dispatcher recovers the invalid slot | Preserves old record, starts fresh context with new execution/result identity in same slot at same target/scope; no old observations sent. |
+| Reconciler sees an invalid legacy record with a FAIL or advisory zero-findings review | Explicitly excludes it and waits for the replacement; history is not rewritten. |
+| Host inherits broad tools despite prompt restriction | Records delivery-only limitation; never claims enforced isolation; strict-isolation requirement fails compatibility gate. |
+
+## Remaining workflow scenarios
 
 The first useful scenarios should cover:
 

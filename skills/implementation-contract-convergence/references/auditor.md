@@ -2,7 +2,7 @@
 
 ## Mission
 
-Read `essence.md` and `project-boundary.md` first. Together they define the contract standard and responsibility boundary being audited.
+Read the packet's generic `essence.md` and `project-boundary.md` standards first. Together they define the contract standard and responsibility boundary being audited. Use only dispatcher-delivered, allowlisted inputs as specified in `auditor-inputs.md`; request missing authority from the dispatcher instead of fetching it yourself.
 
 Determine whether the exact candidate Essence, interpreted against the established Project Boundary, forms an unambiguous effective implementation contract.
 
@@ -17,9 +17,12 @@ Before sealing your result, do not consume:
 - sibling Auditor findings;
 - Reconciler conclusions;
 - claims that a prior finding was fixed;
-- remediation reasoning intended to steer your verdict.
+- remediation reasoning intended to steer your verdict;
+- any prior Auditor verdicts/findings, owner-decision discussion, audit journal, or execution history.
 
-If independence is materially compromised, report an execution blocker rather than pretending the slot is valid.
+Do not perform GitHub/git verification or repository/history/Issue reads. A fresh context does not imply restricted tool permissions.
+
+If forbidden material enters your context, stop immediately and return a sealed INVALID execution blocker with null verdict and no substantive findings or advisory review. Do not finish the audit. The dispatcher will retry your logical slot with a fresh worker; no observations transfer.
 
 ## Audit standard
 
@@ -72,17 +75,25 @@ A request for more clarity without a materially different plausible outcome is n
 Return:
 
 - exact target identity;
-- verdict: PASS or FAIL;
+- round, logical slot, execution identity, declared scope and input packet digest;
+- status: SEALED; validity: VALID or INVALID; forbidden exposure: yes/no;
+- verdict: PASS or FAIL for a VALID execution; null for INVALID;
 - concise summary;
 - zero or more substantive findings;
 - execution provenance available from the environment.
 
 PASS requires zero substantive findings.
 
-Complete the full audit even after finding something that may require an owner decision.
+For an INVALID execution, verdict is null and substantive findings are empty. Report a minimal execution-blocker description and provenance only, without reproducing forbidden content.
+
+Complete the full audit even after finding something that may require an owner decision, provided the execution remains valid.
 
 ## Minimal kickoff
 
     You are Independent Auditor <slot> for formal audit round <N>.
-    Audit the exact assigned candidate independently.
-    Read references/essence.md, references/project-boundary.md, and the skill's Auditor reference, then return a sealed formal result.
+    Execution <id>; use only the attached checked input packet <digest>.
+    Audit its exact candidate and scope independently. Do not inherit or read run history.
+    Read its generic Essence, Project Boundary, Auditor and input-boundary instructions.
+    Do not use repository/network/history tools; request missing inputs from the dispatcher.
+    If forbidden material appears, stop and seal INVALID with null verdict and no findings or advisory review.
+    Otherwise return a sealed formal result bound to this packet.

@@ -32,6 +32,8 @@ Before doing any formal convergence work, verify that the host can satisfy all h
 4. provide durable shared run state through one selected backend so a fresh coordinator can reconstruct the run after interruption;
 5. bind every formal round to an immutable target identity.
 
+Read `references/auditor-inputs.md` before launching workers. Establish fresh contexts without inherited conversation and dispatcher-controlled allowlisted delivery. Record whether isolation is host-enforced or delivery-only; prompts alone do not enforce access restrictions. Apply the documented fail-closed rule when required isolation is unavailable.
+
 If any hard requirement is unavailable or cannot be established, stop with an incompatible-host or execution blocker. Do not simulate independent Auditors in one shared context, do not claim formal PASS, and do not freeze the Essence.
 
 An incompatible host may still help draft an Essence or perform an advisory review outside this formal skill.
@@ -50,9 +52,9 @@ The effective implementation contract must be reconstructible from durable repos
 
 Before drafting, semantic coverage, remediation, or formal audit, read:
 
-- `references/essence.md` — what the Essence owns and what implementation-ready means;
-- `references/project-boundary.md` — what the component may assume is already provided and how to keep boundary-owned mechanics out of Essence scope;
-- `references/incremental-development.md` — whether an incremental change needs no contract change, reopening an existing Essence, or a new Essence.
+- `references/essence.md` � what the Essence owns and what implementation-ready means;
+- `references/project-boundary.md` � what the component may assume is already provided and how to keep boundary-owned mechanics out of Essence scope;
+- `references/incremental-development.md` � whether an incremental change needs no contract change, reopening an existing Essence, or a new Essence.
 
 ## Entry: classify, draft, and check semantic coverage
 
@@ -90,9 +92,9 @@ When the candidate Essence is ready for formal audit:
 
 1. establish the exact candidate Essence, declared audit scope, its Project Boundary, and the repository or workspace authority being audited;
 2. create or update durable run state and the human-readable audit journal;
-3. run fresh independent Auditor slots against the same immutable target;
-4. durably seal every required raw result;
-5. after every required Auditor result is sealed, run a fresh Reconciler;
+3. have the dispatcher verify the target and prepare checked, allowlisted input packets, then launch fresh independent Auditor slots without inherited conversation;
+4. durably seal raw results; invalidate contaminated executions and retry the same logical slot in a fresh context without reusing observations;
+5. after every required slot has a valid sealed result for the same target, scope and input manifest, run a fresh Reconciler;
 6. durably persist the canonical reconciliation;
 7. follow exactly one transition:
    - PASS -> FREEZE
@@ -114,7 +116,7 @@ Load the role reference only when that role is active:
 - Remediator: references/remediator.md
 - Freeze and owner handoff: references/freeze-and-handoff.md
 
-The coordinating or root agent owns workflow transitions and durable bookkeeping. It must not substitute its own substantive judgment for an Auditor, Reconciler, or owner decision.
+The coordinating or root agent owns workflow transitions, target verification, Auditor input delivery, and durable bookkeeping. It must not substitute its own substantive judgment for an Auditor, Reconciler, or owner decision. Auditors receive only permitted current authority and generic audit instructions, never execution history or unfiltered backend responses.
 
 ## What counts as a blocker
 
