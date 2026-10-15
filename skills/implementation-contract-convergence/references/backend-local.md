@@ -98,6 +98,10 @@ For this skill, the safe default is handoff-only:
 
 This matches the owner-review boundary between contract convergence and later code implementation.
 
+## Owner-decision persistence
+
+Store each canonical decision in `owner-decisions/<decision-id>.md`, including the exact stable ID, question, every alternative's letter, name, meaning, pros/cons and recommendation. Record partial owner replies with their actual source and selected letter **and resolved meaning**, without treating unanswered items as resolved. On recovery read these records before rendering the remaining packet; retain the original letter-to-meaning mapping. Ambiguous or unknown labels require clarification, not inferred consent.
+
 ## Recovery
 
 After interruption:
