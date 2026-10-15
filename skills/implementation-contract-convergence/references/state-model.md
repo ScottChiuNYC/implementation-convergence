@@ -34,7 +34,7 @@ The next transition is REMEDIATE, WAITING_FOR_OWNER, or FREEZE.
 
 ### Owner decision
 
-An owner-decision record contains a stable decision identity, affected canonical finding identities, exact question, materially viable alternatives, owner resolution, and durable source of that resolution.
+An owner-decision record contains a stable decision identity, affected canonical finding identities, exact question, materially viable alternatives with stable A/B/C labels and descriptive names, concise trade-offs and downstream consequences, a non-binding recommendation (or reason none is justified), owner resolution including the selected label and meaning, and durable source of that resolution.
 
 Do not manufacture a resolution because the backend needs a value.
 
