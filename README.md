@@ -65,9 +65,9 @@ In current intended usage:
 
 ### Contract-to-Code Convergence
 
-Planned second skill.
+**v0.1 draft (not yet single-invocation E2E verified).**
 
-skills/contract-to-code-convergence/ currently contains only a placeholder. No SKILL.md exists yet, so its protocol is intentionally undefined.
+`skills/contract-to-code-convergence/` now contains `SKILL.md`, acceptance and state/handoff references, and explicit-invocation agent metadata. Its pipeline seals independent acceptance criteria before implementation, then runs implementation, independent review/remediation, and fresh final verification. Merge requires prior authorization. See its README for limitations.
 
 See docs/lifecycle.md for the repository-level boundary between the two skills.
 
@@ -184,7 +184,11 @@ See the backend references inside the skill for full rules.
         assets/
           ESSENCE_AUDIT_TEMPLATE.md
       contract-to-code-convergence/
+        SKILL.md
         README.md
+        agents/openai.yaml
+        references/acceptance-manifest.md
+        references/state-and-handoff.md
     docs/
       lifecycle.md
       workflow/
