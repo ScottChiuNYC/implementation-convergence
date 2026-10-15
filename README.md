@@ -52,7 +52,11 @@ A formal run requires an agent host that can:
 
 If these conditions are not met, the host may help draft or review an Essence, but it must not claim a formal convergence PASS or freeze.
 
-The compatibility rule is capability-based rather than tied to product names. In current intended usage:
+The compatibility rule is capability-based rather than tied to product names.
+
+Auditor inputs are verified and allowlisted by the dispatcher before launching fresh contexts. Workers receive current authority and generic instructions, not backend responses or run history. Hosts with inherited tools provide delivery-only separation, not enforced access isolation; record that limitation and fail closed when required isolation is unavailable. See `skills/implementation-contract-convergence/references/auditor-inputs.md`.
+
+In current intended usage:
 
 - VS Code Copilot or local Codex normally use the local backend when they have persistent shared filesystem state, git, and isolated workers;
 - Codex may use either backend depending on its execution environment;
@@ -77,7 +81,7 @@ For a target repository, the most portable repo-local location shared by Codex a
 
     <target-repo>/.agents/skills/implementation-contract-convergence/
 
-Place the complete skill directory there, including SKILL.md, references/, assets/, and agents/.
+Place the complete skill directory there, including SKILL.md, references/, assets/, agents/, and optional scripts/.
 
 During v0.1 development, prefer a deliberate copy, vendor, or sync step from this repository rather than editing divergent copies by hand.
 

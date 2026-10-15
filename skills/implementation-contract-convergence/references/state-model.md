@@ -18,11 +18,13 @@ Record at least the round identity, exact target identity, declared audit scope,
 
 The target identity and declared audit scope must not change after the round begins.
 
+Record the dispatcher-verified input manifest, instruction version and isolation mode. Per assignment, record an execution identity and packet digest. Verification evidence and replacement linkage are coordinator-only, not Auditor inputs.
+
 ### Raw Auditor result
 
-Each Auditor slot produces one sealed result containing the round identity, slot identity, exact target identity, declared audit scope, verdict, complete substantive findings, available execution provenance, and sealed status.
+Each logical Auditor slot must have one accepted valid sealed execution containing the round identity, slot and execution identities, exact target identity, declared audit scope, input packet digest, validity, exposure declaration, verdict, complete substantive findings, available execution provenance, and sealed status.
 
-A sealed result is immutable evidence. A substantive correction requires a fresh replacement slot or a fresh round with preserved provenance.
+A sealed result is immutable evidence. Contamination produces INVALID, null verdict and no substantive/advisory review. Preserve that execution and retry the same logical slot with a new execution identity and result locator; retain both locators and explicit exclusion/replacement linkage. A substantive correction otherwise requires a fresh execution or round with preserved provenance. Never rewrite historical evidence to fit the new schema.
 
 ### Reconciliation
 

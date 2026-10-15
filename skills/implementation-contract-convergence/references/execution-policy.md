@@ -18,7 +18,9 @@ Default formal configuration: three Auditor slots.
 
 The owner or repository policy may explicitly choose another fixed configuration before the round begins. Do not change the slot count or composition after seeing findings.
 
-A root agent must not leak sibling findings into an Auditor before that Auditor seals its result.
+A root agent must not leak prior/sibling findings, remediation reasoning or reconciliation history into an Auditor. Follow `auditor-inputs.md`: dispatcher-only backend verification, positively allowlisted delivery, fresh contexts without inherited history, and recorded isolation mode.
+
+Forbidden exposure invalidates the execution immediately: seal INVALID with null verdict, no substantive findings and no advisory review. Preserve its record and retry the same logical slot with a new execution identity and fresh context. Do not transfer observations or change slot count, target or scope. Reconciliation waits for all required valid executions. This operational recovery needs no new owner gate; block if the unsafe delivery cannot be corrected.
 
 ## Reconciler and Remediator freshness
 
@@ -36,6 +38,8 @@ If the owner explicitly requires a particular model, executor, or reasoning poli
 
 Do not invent provenance that the platform does not expose.
 
+Record the input manifest and packet digest, dispatcher verification evidence, execution identity, isolation mode and actual restrictions when available. Delivery-only mode is not a tool-level isolation guarantee.
+
 ## Capability failure
 
 If fresh independent workers are unavailable, do not claim a formal multi-Auditor PASS.
@@ -46,7 +50,7 @@ Operational failure is not a substantive contract finding.
 
 ## Round integrity
 
-Complete all configured Auditor slots before reconciliation.
+Complete all configured Auditor slots with valid sealed executions before reconciliation. Never count an invalid execution's PASS, FAIL or advisory observations.
 
 Do not terminate a round early because one Auditor found an owner decision.
 

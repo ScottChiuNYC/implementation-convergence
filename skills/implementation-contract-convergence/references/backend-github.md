@@ -10,6 +10,14 @@ Every formal round binds to one immutable git commit SHA.
 
 Issue and comment activity does not change the target. Repository commits may invalidate audit authority.
 
+## Dispatcher-only verification and delivery
+
+Before launching Auditors, the dispatcher follows `auditor-inputs.md`: verify the commit/tree and exact-ref allowlisted blobs, inspect contents, then deliver only the clean packet. The dispatcher owns GitHub reads, result writes and readback; Auditors do not invoke the connector.
+
+Prefer Git-data commit metadata (`GET /repos/<owner>/<repo>/git/commits/<sha>`) and tree/blob or exact-ref file reads. Metadata responses still contain messages/parents: project only identities. A convenience commit/PR verification wrapper may return a full diff containing remediation reports even when no report was explicitly requested. Never pass such a response, its text blocks, full file list, or commit message to an Auditor. Projection must precede delivery; hiding it after it enters a worker's context cannot restore independence.
+
+Control/result Issues and verification evidence remain dispatcher/Reconciler resources. Auditors receive assignment metadata, not Issue bodies or links to browse. Skill instructions may be pinned to a separate skill commit; record their identities in the input manifest.
+
 ## Canonical control-plane shape
 
 For each formal round use:
@@ -28,6 +36,7 @@ Precreate one result issue per slot with assignment metadata only:
 
 - round identity;
 - slot identity;
+- execution identity and input packet digest;
 - exact target SHA;
 - status: PENDING.
 
@@ -35,11 +44,11 @@ Each Auditor must remain blind to sibling result contents until it seals its own
 
 After an Auditor finishes, mechanically write the complete result and mark it SEALED.
 
-Do not substantively edit a sealed result. A correction requires a fresh replacement slot or fresh round with preserved provenance.
+Do not substantively edit a sealed result. For contamination, preserve it as an invalid execution and precreate a new result Issue for a fresh execution of the same logical slot, target and scope. Record replacement linkage in coordinator state only. Apply `auditor-inputs.md`; no substantive or advisory verdict from the invalid execution counts.
 
 ## Reconciliation
 
-Only after every required result is sealed may the Reconciler read them together.
+Only after every configured slot has a valid sealed result for the same target, scope and input manifest may the Reconciler read them together. Preserve invalid result locators as excluded execution evidence, never as substantive findings or extra slots.
 
 Persist the round and target identities, every raw result identity, raw-to-canonical mappings or explicit dismissals, canonical findings, owner-decision items, verdict, and next transition.
 
