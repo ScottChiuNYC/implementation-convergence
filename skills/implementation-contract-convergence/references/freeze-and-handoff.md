@@ -7,6 +7,11 @@ Escalate only after canonical reconciliation establishes that a material choice 
 At WAITING_FOR_OWNER:
 
 - persist the canonical decision packet;
+- present **every** pending decision directly in the owner-facing conversation, not merely a link to the durable packet. For each decision show its stable ID, exact question, alternatives labeled A/B/C with descriptive names, concise pros/cons and consequences, and a clearly non-binding recommendation by letter with rationale (or explain why no recommendation is justified);
+- include the durable packet link as a reference, not as a substitute for the conversational presentation;
+- invite concise responses such as `D-01: B, D-02: A`; interpret them using the stable decision-ID/letter mapping and clarify only ambiguous responses;
+- preserve alternative labels and meanings across re-presentation; do not silently renumber or rename an existing choice;
+- record the owner's actual selections and their resolved meanings durably, then resume the workflow without an additional approval gate unless another genuine owner decision is needed;
 - stop authoritative remediation that depends on the unresolved choice;
 - preserve the exact candidate and round state;
 - resume only after the owner's answer is durably incorporated.
