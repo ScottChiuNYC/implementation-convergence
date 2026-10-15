@@ -38,8 +38,11 @@ Each owner-decision item contains:
 - stable decision ID;
 - affected canonical finding IDs;
 - exact question;
-- materially viable alternatives;
-- downstream consequence of the choice.
+- materially viable alternatives, each with a stable letter (A, B, C, ...) and a descriptive name;
+- concise pros, cons, and downstream consequences for each alternative;
+- a non-binding recommended alternative by letter, with rationale, or an explicit explanation why evidence is insufficient to recommend one.
+
+Keep each alternative's letter-to-meaning mapping stable for the lifetime of that decision ID. Recommendations are advisory only: neither the Reconciler nor dispatcher may select an alternative on the owner's behalf.
 
 Keep the packet as small as possible. Do not escalate preferences or decisions that existing authority already determines.
 

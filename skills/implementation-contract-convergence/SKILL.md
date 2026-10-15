@@ -146,7 +146,7 @@ Do not ask the owner merely because an Auditor raised a question.
 
 First complete the full audit round and reconciliation.
 
-Escalate only when canonical reconciliation establishes that current authority cannot determine a material choice. Present the smallest decision packet needed to unblock convergence. Do not continue authoritative remediation across an unresolved owner decision.
+Escalate only when canonical reconciliation establishes that current authority cannot determine a material choice. Present the smallest decision packet needed to unblock convergence **directly in the owner-facing conversation**, with stable decision IDs, A/B/C-labeled alternatives and descriptive names, concise pros/cons, and an advisory recommendation with rationale (or an explicit reason no recommendation is justified). A durable backend link supplements but never replaces the conversational packet. Accept owner replies by decision ID and letter, persist their meaning, and resume without redundant approval gates. Follow `references/freeze-and-handoff.md`. Do not continue authoritative remediation across an unresolved owner decision.
 
 ## Freeze rule
 

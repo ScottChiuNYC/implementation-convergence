@@ -56,9 +56,11 @@ Then update round-control state mechanically.
 
 ## Owner decisions
 
-Persist owner-decision items durably.
+Persist owner-decision items durably. At owner handoff, also render all pending items, labeled alternatives, trade-offs and advisory recommendations in the conversation as required by `freeze-and-handoff.md`; an Issue link alone is insufficient.
 
 The human's actual resolution must be recorded before remediation proceeds across that decision boundary.
+
+Keep the stable decision ID and complete letter-to-meaning mapping in the durable owner-decision record. Persist each actual owner response, source, selected letter and resolved meaning, including partial responses. On recovery, read the canonical records and actual owner replies before rendering only unresolved decisions. Never infer a selection from an agent-authored issue, an ambiguous reply or a missing response.
 
 Do not treat an agent-authored issue body as owner approval.
 
