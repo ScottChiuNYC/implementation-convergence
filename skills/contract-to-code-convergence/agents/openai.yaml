@@ -1,0 +1,10 @@
+interface:
+  display_name: "Contract-to-Code Convergence"
+  short_description: "Converge frozen implementation contracts into verified code"
+  default_prompt: "Use the frozen Essence and Project Boundary to derive independent acceptance criteria, implement, review, remediate, and independently verify code. Respect merge authorization and preserve durable evidence."
+
+policy:
+  products:
+    - CHAT
+    - CODEX
+  allow_implicit_invocation: false
