@@ -52,9 +52,9 @@ The effective implementation contract must be reconstructible from durable repos
 
 Before drafting, semantic coverage, remediation, or formal audit, read:
 
-- `references/essence.md` � what the Essence owns and what implementation-ready means;
-- `references/project-boundary.md` � what the component may assume is already provided and how to keep boundary-owned mechanics out of Essence scope;
-- `references/incremental-development.md` � whether an incremental change needs no contract change, reopening an existing Essence, or a new Essence.
+- `references/essence.md` — what the Essence owns and what implementation-ready means;
+- `references/project-boundary.md` — what the component may assume is already provided and how to keep boundary-owned mechanics out of Essence scope;
+- `references/incremental-development.md` — whether an incremental change needs no contract change, reopening an existing Essence, or a new Essence.
 
 ## Entry: classify, draft, and check semantic coverage
 

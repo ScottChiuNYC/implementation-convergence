@@ -196,8 +196,8 @@ See the backend references inside the skill for full rules.
 
 Only two reusable infrastructure capabilities are intentionally retained:
 
-1. CodeBinder PDF � builds a reviewable whole-repository PDF and optionally publishes it to Google Drive.
-2. Remote Safe Patch � provides a fail-closed path for narrow, exact edits made through connector-only GitHub workflows.
+1. CodeBinder PDF — builds a reviewable whole-repository PDF and optionally publishes it to Google Drive.
+2. Remote Safe Patch — provides a fail-closed path for narrow, exact edits made through connector-only GitHub workflows.
 
 Everything else should earn its place based on the needs of these skills.
 
