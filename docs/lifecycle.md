@@ -16,7 +16,7 @@ This repository contains two related but independently usable skills.
     frozen, unambiguous implementation contract
             |
             v
-    owner review
+    optional owner review / risk gate
             |
             v
     Contract-to-Code Convergence
@@ -49,9 +49,9 @@ A formal run requires fresh sufficiently isolated workers plus durable shared st
 
 ### Contract-to-Code Convergence
 
-Not yet authored.
+v0.1 drafted, not yet validated as a single-invocation end-to-end workflow.
 
-The placeholder directory exists only to make the intended repository shape explicit. It has no SKILL.md and therefore defines no executable skill contract.
+The second skill owns pre-implementation independent acceptance derivation, implementation, independent review/remediation, fresh final verification, and optionally authorized merge. Publication/PDF/downstream propagation remain explicit project-level actions. It consumes frozen Essence plus Project Boundary without silently changing either.
 
 ## Boundary
 
