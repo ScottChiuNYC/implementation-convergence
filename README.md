@@ -74,7 +74,7 @@ See docs/lifecycle.md for the repository-level boundary between the two skills.
 
 ## Quick-start prompts
 
-Copy the appropriate minimal invocation from the skill README; substitute the target repository. These prompts are the user-facing invocation interface, **not** a second copy of the workflow protocol:
+Copy the appropriate minimal invocation from the skill README; specify both the target repository and the repository-relative Target Essence path. These prompts are the user-facing invocation interface, **not** a second copy of the workflow protocol:
 
 - [Implementation Contract Convergence — GitHub and local examples](skills/implementation-contract-convergence/README.md#copy-paste-invocation-examples)
 - [Contract-to-Code Convergence — GitHub and local examples](skills/contract-to-code-convergence/README.md#copy-paste-invocation-examples)
