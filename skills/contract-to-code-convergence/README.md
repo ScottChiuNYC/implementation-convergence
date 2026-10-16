@@ -21,9 +21,10 @@ Use the Contract-to-Code Convergence Skill from:
 https://github.com/ScottChiuNYC/implementation-convergence
 
 Target repository: <repository URL>
+Target Essence: <repository-relative path>
 Use the GitHub backend.
 
-Implement the repository's FROZEN Essence Contract and complete the Skill's workflow through its defined final state.
+Implement the specified FROZEN Essence Contract and complete the Skill's workflow through its defined final state.
 Escalate only genuine owner decisions or unavoidable blockers.
 Follow the Skill's own protocol.
 ```
@@ -43,11 +44,14 @@ Install or make the skill available to the host as documented in the [repository
 ```text
 Use the Contract-to-Code Convergence Skill.
 Target repository: <local repository path>
+Target Essence: <repository-relative path>
 Use the local backend.
 
-Implement the repository's FROZEN Essence Contract and complete the Skill's workflow through its defined final state.
+Implement the specified FROZEN Essence Contract and complete the Skill's workflow through its defined final state.
 Escalate only genuine owner decisions or unavoidable blockers.
 Follow the Skill's own protocol.
 ```
 
 The local backend requires durable state, isolated workers and actual build/test execution capability. These examples do not assert that a specific host passes the compatibility gate.
+
+The **Target Essence path is required** for repository-scoped invocations, including incremental development. Do not assume the only Essence in a repository is the intended target. Version labels alone are insufficient when ambiguous.
