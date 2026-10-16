@@ -16,6 +16,9 @@ Use one backend per run: GitHub branches/PRs/checks and durable records, or a pe
 
 ## Entry and immutable authority
 
+For repository-scoped invocation, require an explicit **Target Essence repository-relative path** as well as the Target Repository. Resolve and read that exact path at a pinned commit SHA, and record both path and SHA in durable run identity. Do not silently select a different Essence or expand scope to sibling Essences. If the path is omitted, ask the owner to identify it before formal work (even if only one candidate currently exists); do not infer from filenames or version labels. For free-form conversation-to-new-Essence work, obtain an explicit destination path before creating the repository artifact. Incremental revisions to the same responsibility may reopen its Essence rather than create a new one.
+
+
 1. Identify the exact frozen Essence, Project Boundary, repository baseline SHA, declared responsibility, acceptance conditions and prohibited behavior.
 2. Check freeze provenance, unresolved owner decisions, material boundary drift and baseline project build. Do not treat a green CI badge for an unrelated SHA as evidence.
 3. For an incremental task, constrain the scope to the affected responsibility, interfaces and boundary; do not reconverge unrelated components.
