@@ -1,0 +1,55 @@
+---
+name: contract-to-code-convergence
+description: Explicitly invoked workflow to turn a frozen implementation contract into verified code through independent acceptance derivation, implementation, independent review/remediation, and final verification.
+compatibility: Requires fresh isolated worker contexts, durable run state, repository read/write and test execution, and exact-commit verification. GitHub backend requires branch/PR/check access; local backend requires durable filesystem and git.
+---
+
+# Contract-to-Code Convergence (draft v0.1)
+
+Given a FROZEN / IMPLEMENTATION_READY Essence and its established Project Boundary, converge implementation to demonstrable contract compliance. Do not reinterpret, reopen, or modify the frozen Essence in this skill. The effective authority is **Essence + Project Boundary**, not prior agent reports, hidden conversation, or audit history.
+
+## Invocation and compatibility
+
+Require explicit owner invocation; do not implicitly begin implementation because a contract was frozen. Once invoked, proceed autonomously through the approved run policy. Check for (1) fresh, sufficiently isolated workers, (2) durable shared state and interruption recovery, (3) immutable commit identification, (4) repository modification and build/test capability, and (5) independent verification of CI and artifacts. If any essential capability is absent, fail closed and report the precise blocker. A single agent impersonating three roles is not independent verification.
+
+Use one backend per run: GitHub branches/PRs/checks and durable records, or a persistent local git worktree plus durable records. Ephemeral cloud filesystem alone is not a durable local backend. Backend changes transport, not evidence or authority rules. The host may delegate to native Work/Codex workers; do not construct a custom orchestration runtime without demonstrating a missing native capability.
+
+## Entry and immutable authority
+
+1. Identify the exact frozen Essence, Project Boundary, repository baseline SHA, declared responsibility, acceptance conditions and prohibited behavior.
+2. Check freeze provenance, unresolved owner decisions, material boundary drift and baseline project build. Do not treat a green CI badge for an unrelated SHA as evidence.
+3. For an incremental task, constrain the scope to the affected responsibility, interfaces and boundary; do not reconverge unrelated components.
+4. Synchronize project scaffolding only if necessary. For Copier, inspect .copier-answers.yml, confirm the intended revision/tag, preserve project files, and verify baseline build *before* domain implementation. Never silently update unrelated infrastructure.
+5. Record run identity, source SHAs, roles, stage, findings and evidence locations in durable state.
+
+## Stage A — independent acceptance derivation (before implementation)
+
+Launch an **Acceptance Analyst** in a fresh context with frozen authority and the baseline, **before the Implementer writes code**. Produce a sealed acceptance manifest with stable IDs linking each material requirement to: expected observable behavior/invariant, positive and negative cases, verification method, tolerances or objective pass criteria, and any justified non-automatable inspection. Include boundary and packaging obligations only where authority requires them. Mark unknowns rather than inventing new domain requirements.
+
+The dispatcher verifies that the manifest is derived from current authority, records its exact content hash, and makes the manifest available to the Implementer. Acceptance criteria are evidence targets, not a second normative contract; a disagreement with the frozen authority must be resolved in favor of the authority or escalated if materially ambiguous. The Acceptance Analyst may later serve as independent Reviewer **only if** it receives no implementation work or mutable implementer context before the manifest is sealed; use a fresh review context.
+
+## Stage B — implementation
+
+Launch an Implementer using the frozen authority, Project Boundary, and sealed acceptance manifest. Implement complete scope, add meaningful tests, run the canonical build and validation, and open an implementation PR or equivalent local candidate. Do not modify frozen authority, audit history, or acceptance criteria to make tests pass. Preserve source/package boundaries. Record commit SHA, commands, outputs, tests, artifact checks and limitations. Self-reported success is not final evidence.
+
+## Stage C — independent review and remediation
+
+Launch a fresh independent Reviewer with frozen authority, sealed acceptance manifest, implementation diff and reproducible environment. Independently examine mathematical/domain correctness, interfaces, errors, edge cases, tests, false positives, packaging, and unapproved behavior. Construct counterexamples or independent oracles where useful. Produce requirement-to-code-to-test/evidence traceability and severity-ranked findings with locations and reproduction. Check both directions: all requirements implemented, and no material unauthorized additions.
+
+A Remediator may be the Reviewer, but not the original Implementer by default. Fix confirmed findings narrowly, add regressions, and rerun affected plus canonical tests. Every code change creates a new candidate SHA. Re-review changed behavior and impacted requirements. Unresolved material choices go to WAITING_FOR_OWNER with stable decision IDs, labeled alternatives, pros/cons and a recommendation; do not choose on the owner's behalf.
+
+## Stage D — independent final verification
+
+Use a **new fresh Final Verifier**, separate from implementation and remediation. Verify the current candidate SHA, frozen authority unchanged, acceptance traceability complete, prior findings actually fixed, regression effectiveness, CI/checks on the candidate SHA, packaging and downstream consumers when applicable, no blocking review comments or conflicts, and authorized merge policy. Independently rerun focused checks when feasible. This is an exit-criteria check, not an automatic full fourth audit.
+
+If a blocker is found, return to remediation and reverify the new SHA. If the same substantive blocker persists across two remediation attempts, diagnose and stop at WAITING_FOR_OWNER or BLOCKED instead of looping forever. Never call a run VERIFIED with unresolved material findings or unverified SHA provenance.
+
+## Completion and publication
+
+States: PREFLIGHT -> ACCEPTANCE_SEALED -> IMPLEMENTING -> REVIEWING -> REMEDIATING (loop) -> FINAL_VERIFYING -> VERIFIED; alternatively WAITING_FOR_OWNER or BLOCKED. MERGED is a separate authorized terminal state. Preserve durable state after interruptions and reconstruct from exact commits and sealed evidence before resuming; never infer completion from a prior agent summary.
+
+Default **do not merge** without explicit owner authorization or a predeclared merge policy. When authorized, final verifier may squash merge only after all exit criteria pass; record merge SHA. Publish, PDF generation and downstream propagation are separate opt-in project actions and must not be implied by merge. Report requirement coverage, verified SHA, tests and CI, findings and fixes, limitations, final status and links.
+
+## Non-goals
+
+Do not re-run Implementation Contract Convergence silently, rewrite the Essence, introduce a generic dedicated-contract taxonomy, require arbitrary fixed review rounds, or claim enforced worker isolation based on prompts alone. This draft protocol has not yet passed a full single-invocation E2E test.
