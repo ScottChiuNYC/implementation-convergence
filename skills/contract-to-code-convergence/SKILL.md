@@ -16,14 +16,14 @@ Use one backend per run: GitHub branches/PRs/checks and durable records, or a pe
 
 ## Entry and immutable authority
 
-For repository-scoped invocation, require an explicit **Target Essence repository-relative path** as well as the Target Repository. Resolve and read that exact path at a pinned commit SHA, and record both path and SHA in durable run identity. Do not silently select a different Essence or expand scope to sibling Essences. If the path is omitted, ask the owner to identify it before formal work (even if only one candidate currently exists); do not infer from filenames or version labels. For free-form conversation-to-new-Essence work, obtain an explicit destination path before creating the repository artifact. Incremental revisions to the same responsibility may reopen its Essence rather than create a new one.
+For repository-scoped invocation, require a Target Repository. If the owner supplies a repository-relative Target Essence path, use exactly that path and validate its frozen status. Otherwise discover candidates from the pinned repository tree and normative references: select automatically only when exactly one unambiguous FROZEN / IMPLEMENTATION_READY Essence exists; record its path, repository commit SHA, blob SHA, discovery evidence, and selection reason before formal delegation. If zero candidates exist, stop and report the missing authority; if multiple plausible candidates exist, ask the owner to select, without guessing. Do not expand scope to sibling Essences. Persist the resolved selection for interruption recovery. Incremental revisions to the same responsibility may reopen its Essence rather than create a new one.
 
 
 1. Identify the exact frozen Essence, Project Boundary, repository baseline SHA, declared responsibility, acceptance conditions and prohibited behavior.
 2. Check freeze provenance, unresolved owner decisions, material boundary drift and baseline project build. Do not treat a green CI badge for an unrelated SHA as evidence.
 3. For an incremental task, constrain the scope to the affected responsibility, interfaces and boundary; do not reconverge unrelated components.
 4. Synchronize project scaffolding only if necessary. For Copier, inspect .copier-answers.yml, confirm the intended revision/tag, preserve project files, and verify baseline build *before* domain implementation. Never silently update unrelated infrastructure.
-5. Record run identity, source SHAs, roles, stage, findings and evidence locations in durable state.
+5. Record run identity, governing Skill revision SHA, source SHAs, roles, stage, findings and evidence locations in durable state. At each material gate, retain a compact evidence index with role, candidate SHA, command/check, exit status, evidence location, SHA256 digest when applicable, and retention/availability limitations. Preserve critical evidence in durable backend storage rather than relying solely on ephemeral workspace paths. Record for each worker whether independence is fresh-context only, controlled-input delivery, or enforced tool-access isolation; never claim a stronger level than demonstrated.
 
 ## Stage A — independent acceptance derivation (before implementation)
 
@@ -57,4 +57,4 @@ Default **do not merge** without explicit owner authorization or a predeclared m
 
 ## Non-goals
 
-Do not re-run Implementation Contract Convergence silently, rewrite the Essence, introduce a generic dedicated-contract taxonomy, require arbitrary fixed review rounds, or claim enforced worker isolation based on prompts alone. This draft protocol has not yet passed a full single-invocation E2E test.
+Do not re-run Implementation Contract Convergence silently, rewrite the Essence, introduce a generic dedicated-contract taxonomy, require arbitrary fixed review rounds, or claim enforced worker isolation based on prompts alone. The first reported single-invocation E2E run (C2C-20261016-01) passed with evidence qualifications; this does not establish production readiness.
