@@ -49,7 +49,7 @@ A formal run requires fresh sufficiently isolated workers plus durable shared st
 
 ### Contract-to-Code Convergence
 
-v0.1 drafted, not yet validated as a single-invocation end-to-end workflow.
+v0.1 has a first single-invocation E2E PASS with evidence qualifications (C2C-20261016-01), not production readiness. The authority-discovery and evidence refinements have not themselves passed a new E2E run; see the second skill's README for limitations.
 
 The second skill owns pre-implementation independent acceptance derivation, implementation, independent review/remediation, fresh final verification, and optionally authorized merge. Publication/PDF/downstream propagation remain explicit project-level actions. It consumes frozen Essence plus Project Boundary without silently changing either.
 

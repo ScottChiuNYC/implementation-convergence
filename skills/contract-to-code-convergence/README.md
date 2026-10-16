@@ -54,4 +54,16 @@ Follow the Skill's own protocol.
 
 The local backend requires durable state, isolated workers and actual build/test execution capability. These examples do not assert that a specific host passes the compatibility gate.
 
-The **Target Essence path is optional** when exactly one unambiguous FROZEN / IMPLEMENTATION_READY Essence exists. Explicit paths take precedence and must be validated. If several candidates exist, ask the owner; if none exists, stop. Record the selected path and immutable authority identity for recovery.
+The **Target Essence path is optional** when exactly one unambiguous FROZEN / IMPLEMENTATION_READY Essence exists at the pinned baseline. Explicit paths take precedence and must be validated; an invalid explicit path is BLOCKED, with no fallback discovery. If several candidates exist, ask the owner (WAITING_FOR_OWNER); if none exists, stop (BLOCKED). Referenced normative parts of one Essence are not separate candidates. Record the selected path, immutable authority identity, selection reason and governing Skill revision for recovery.
+
+Retain gate evidence in the selected durable backend and report the achieved worker isolation level and its limitations. A hash or unavailable link alone is not retained evidence; prompts alone do not enforce tool access. Recovery revalidates the recorded target and Skill revision before resuming the first incomplete stage. See [state and handoff](references/state-and-handoff.md) for the exact rules.
+
+## Regression checks
+
+Run from the repository root:
+
+```sh
+python -m unittest discover -s tests/contract-to-code-convergence -p 'test_*.py'
+```
+
+These are protocol-document contract checks, following the existing owner-decision regression pattern. They guard selection branches, evidence obligations, isolation claims, recovery and cross-document consistency; they do not execute an agent workflow or prove worker isolation. The PDF workflow runs them alongside the existing suites. A new E2E run remains necessary to validate the revised protocol in use.

@@ -37,6 +37,7 @@ jobs:
           set -euo pipefail
           python -m unittest discover -s tools/tests -p 'test_*.py'
           python -m unittest discover -s tests/implementation-contract-convergence -p 'test_*.py'
+          python -m unittest discover -s tests/contract-to-code-convergence -p 'test_*.py'
           python -m py_compile \
             tools/check_markdown_math.py \
             tools/disable_pdf_bookmarks.py \
