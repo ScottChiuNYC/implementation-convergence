@@ -1,6 +1,6 @@
 # State and handoff — draft protocol
 
-Record the run and exact authority/baseline SHAs before delegation. A durable journal contains stage, role identity, branch/PR, sealed acceptance manifest hash, independent test-asset hashes and adapter status, candidate HEAD SHA, CI run SHA, findings IDs, remediation commits, owner decision IDs, and merge policy.
+Record the explicit repository-relative Target Essence path and exact authority/baseline SHAs before delegation. Pin the Essence blob and repository commit identities; do not infer the target from other Essence files. If no Target Essence was supplied, obtain the owner's selection before starting formal execution. A durable journal contains stage, role identity, branch/PR, sealed acceptance manifest hash, independent test-asset hashes and adapter status, candidate HEAD SHA, CI run SHA, findings IDs, remediation commits, owner decision IDs, and merge policy.
 
 Roles: Dispatcher (state and input validation), Acceptance Analyst (pre-code independent criteria), Implementer, Independent Reviewer/Remediator, fresh Final Verifier. One worker may hold reviewer and remediator roles; no worker may verify its own remediation as Final Verifier.
 
