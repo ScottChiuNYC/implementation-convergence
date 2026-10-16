@@ -1,6 +1,6 @@
 # State and handoff — draft protocol
 
-Record the explicit repository-relative Target Essence path and exact authority/baseline SHAs before delegation. Pin the Essence blob and repository commit identities; do not infer the target from other Essence files. If no Target Essence was supplied, obtain the owner's selection before starting formal execution. A durable journal contains stage, role identity, branch/PR, sealed acceptance manifest hash, independent test-asset hashes and adapter status, candidate HEAD SHA, CI run SHA, findings IDs, remediation commits, owner decision IDs, and merge policy.
+Resolve the Target Essence from an explicit owner path, or automatically only if exactly one unambiguous FROZEN / IMPLEMENTATION_READY Essence exists at the pinned baseline. Persist selected path, baseline commit, Essence blob SHA, selection evidence, and governing Skill revision. Ask the owner when multiple candidates exist; stop when none exists. On recovery, revalidate the recorded identity, never silently select a new target. A durable journal contains a compact evidence index (role, candidate SHA, command/check, exit status, durable location, applicable SHA256 hash, retention limitations), recorded worker isolation level (fresh context, controlled delivery, or enforced tool access), stage, role identity, branch/PR, sealed acceptance manifest hash, independent test-asset hashes and adapter status, candidate HEAD SHA, CI run SHA, findings IDs, remediation commits, owner decision IDs, and merge policy.
 
 Roles: Dispatcher (state and input validation), Acceptance Analyst (pre-code independent criteria), Implementer, Independent Reviewer/Remediator, fresh Final Verifier. One worker may hold reviewer and remediator roles; no worker may verify its own remediation as Final Verifier.
 
@@ -8,6 +8,6 @@ Only transition to ACCEPTANCE_SEALED after manifest and feasible pre-code test a
 
 If interrupted, load journal, verify current remote/local SHAs and artifacts, and resume the first incomplete stage. Divergent or missing state is BLOCKED until reconciled. Persist owner decisions with stable IDs and exact option meaning; never silently reinterpret partial responses.
 
-The GitHub backend may use Issues/PR comments/checks as durable transport. The local backend may use tracked or untracked durable files plus git. Do not require the first skill's exact Issue schema: reuse proven transport where appropriate, but keep the second skill self-contained.
+The GitHub backend may use Issues/PR comments/checks and retained artifacts as durable transport; ephemeral scratch paths alone are insufficient. The local backend may use tracked or untracked durable files plus git. Do not require the first skill's exact Issue schema: reuse proven transport where appropriate, but keep the second skill self-contained.
 
 Exit states: VERIFIED (all acceptance criteria evidenced, no blockers, exact candidate SHA); MERGED (VERIFIED and authorized merge SHA); WAITING_FOR_OWNER; BLOCKED. Publishing and propagation have independent completion records.
