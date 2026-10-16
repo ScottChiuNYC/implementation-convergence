@@ -40,6 +40,9 @@ An incompatible host may still help draft an Essence or perform an advisory revi
 
 ## Inputs
 
+For repository-scoped invocation, require an explicit **Target Essence repository-relative path** as well as the Target Repository. Resolve and read that exact path at a pinned commit SHA, and record both path and SHA in durable run identity. Do not silently select a different Essence or expand scope to sibling Essences. If the path is omitted, ask the owner to identify it before formal work (even if only one candidate currently exists); do not infer from filenames or version labels. For free-form conversation-to-new-Essence work, obtain an explicit destination path before creating the repository artifact. Incremental revisions to the same responsibility may reopen its Essence rather than create a new one.
+
+
 Accept any of these starting points:
 
 - a free-form design conversation or notes;
