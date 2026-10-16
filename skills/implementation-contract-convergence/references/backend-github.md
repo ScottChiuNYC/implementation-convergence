@@ -6,7 +6,7 @@ GitHub transport must preserve the same logical records and role boundaries as t
 
 ## Exact target
 
-Every formal round binds to one immutable git commit SHA.
+Every formal round binds to one immutable git commit SHA and the explicit repository-relative Target Essence path. Record the path, blob identity, repository and commit SHA in the round identity; never substitute another Essence or infer scope from a repository default.
 
 Issue and comment activity does not change the target. Repository commits may invalidate audit authority.
 
