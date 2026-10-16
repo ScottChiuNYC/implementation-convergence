@@ -9,3 +9,45 @@ Read [SKILL.md](SKILL.md), [acceptance manifest](references/acceptance-manifest.
 Status: **draft, not E2E validated as a single invocation**. The PDE solver experiment demonstrated the three-agent implementation/review/final-verification sequence, but did not separately seal acceptance criteria or independent executable tests before implementation and required three manual kickoffs. This skill explicitly addresses those gaps without claiming they are tested.
 
 Explicit human invocation required. Formal execution needs isolated workers, durable state, exact-SHA checks and real build/test access. GitHub and local are intended backends, not yet independently certified for this new skill.
+
+## Copy-paste invocation examples
+
+These are minimal **explicit human triggers**. Replace placeholders. [SKILL.md](SKILL.md) is authoritative for acceptance analysis, implementation, independent review, remediation, verification, and terminal states; prompts must not restate its internal workflow.
+
+### GitHub backend (ChatGPT Work or another compatible host)
+
+```text
+Use the Contract-to-Code Convergence Skill from:
+https://github.com/ScottChiuNYC/implementation-convergence
+
+Target repository: <repository URL>
+Use the GitHub backend.
+
+Implement the repository's FROZEN Essence Contract and complete the Skill's workflow through its defined final state.
+Escalate only genuine owner decisions or unavoidable blockers.
+Follow the Skill's own protocol.
+```
+
+**Optional authorization**, append only if desired:
+
+```text
+You are authorized to squash merge when all required verification criteria pass.
+```
+
+Without this authorization (or another valid prior authorization), do not infer merge permission. Publication and downstream propagation remain separately governed by the Skill.
+
+### Local backend (compatible Codex / VS Code Copilot host)
+
+Install or make the skill available to the host as documented in the [repository README](../../README.md), then explicitly invoke it:
+
+```text
+Use the Contract-to-Code Convergence Skill.
+Target repository: <local repository path>
+Use the local backend.
+
+Implement the repository's FROZEN Essence Contract and complete the Skill's workflow through its defined final state.
+Escalate only genuine owner decisions or unavoidable blockers.
+Follow the Skill's own protocol.
+```
+
+The local backend requires durable state, isolated workers and actual build/test execution capability. These examples do not assert that a specific host passes the compatibility gate.
