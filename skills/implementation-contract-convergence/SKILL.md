@@ -97,16 +97,18 @@ When the candidate Essence is ready for formal audit:
 2. create or update durable run state and the human-readable audit journal;
 3. have the dispatcher verify the target and prepare checked, allowlisted input packets, then launch fresh independent Auditor slots without inherited conversation;
 4. durably seal raw results; invalidate contaminated executions and retry the same logical slot in a fresh context without reusing observations;
-5. after every required slot has a valid sealed result for the same target, scope and input manifest, run a fresh Reconciler;
-6. durably persist the canonical reconciliation;
-7. follow exactly one transition:
+5. after every required slot has a valid sealed result for the same target, scope and input manifest, run a fresh Reconciler using lossless finding-to-obligation mapping;
+6. durably seal reconciliation and have a separate fresh Reconciliation Verifier check semantic coverage, merge classifications, dispositions and owner authority against all sealed raw findings; on failure repair reconciliation and reverify without altering sealed Auditor results;
+7. conduct bounded independent design deliberation for every material agent-authorized resolution and every proposed owner escalation, preserving alternatives, objections and dissent; do not reopen settled owner decisions;
+8. durably seal verified reconciliation, deliberation and the resulting decision disposition;
+9. follow exactly one transition:
    - PASS -> FREEZE
    - FAIL + no owner decision -> REMEDIATE -> fresh audit
    - FAIL + owner decision -> WAITING_FOR_OWNER
-8. after remediation, establish a new immutable target and audit it from scratch;
-9. stop only at verified FROZEN, WAITING_FOR_OWNER, or a fail-closed execution blocker.
+10. after remediation, establish a new immutable target and audit it from scratch;
+11. stop only at verified FROZEN, WAITING_FOR_OWNER, or a fail-closed execution blocker.
 
-Use references/execution-policy.md for independence and target rules.
+Use references/execution-policy.md for independence and target rules. Read `references/reconciliation-deliberation.md` for the mandatory lossless mapping, independent verification, deliberation, evidence and bounded-retry gates. No PASS, remediation or owner handoff may bypass those gates.
 
 ## Role boundaries
 
@@ -116,6 +118,7 @@ Load the role reference only when that role is active:
 
 - Auditor: references/auditor.md
 - Reconciler: references/reconciler.md
+- Reconciliation Verifier and deliberators: references/reconciliation-deliberation.md
 - Remediator: references/remediator.md
 - Freeze and owner handoff: references/freeze-and-handoff.md
 
