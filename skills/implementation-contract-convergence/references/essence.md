@@ -89,6 +89,13 @@ Audit journals, raw Auditor findings, reconciliation records, remediation histor
 
 Do not duplicate long derivations or design documents merely for completeness. If implementation-critical material belongs to the component, make it part of the Essence contract directly or through a referenced normative section/file. If it belongs to another component or reusable capability, place that responsibility behind the Project Boundary rather than inventing a new companion-contract taxonomy.
 
+## Acceptance authority and mathematical checks
+
+Distinguish verification of an established obligation from creation of a new material obligation. Every normative material acceptance requirement must have an explicit Owner/repository source, an explicit bounded delegation, or a rigorously demonstrated mathematical entailment from existing authority. State assumptions for any mathematical entailment and distinguish exact arithmetic from floating-point evaluation.
+
+Auditors and Remediators may add mathematical proofs, identities, analytical examples, or proof obligations without changing the accepted product claim. They must not introduce a newly mandatory empirical benchmark, tolerance, observed convergence-rate bound, transfer-budget fraction, efficiency ratio, or floating-point threshold solely because it appears useful or testable. A theoretical asymptotic order does not prescribe an observed rate on arbitrary finite grids.
+
+When the owner supplies an accuracy or performance requirement, specify objectively how that **existing** requirement is checked, without making an additional independent scientific promise. If the proposed test method or fixture would materially change what counts as acceptable, retain that uncertainty as an Owner Decision rather than inventing a gate. Unproved optional numerical diagnostics may be labelled non-normative for C2C investigation. Mathematical consistency can be reviewed during ICC without running numerical experiments or prototypes.
 ## Completeness dimensions
 
 An Essence has no mandatory chapter template. Its structure should fit the problem domain.
