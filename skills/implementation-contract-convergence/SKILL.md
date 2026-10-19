@@ -76,6 +76,15 @@ Read references/semantic-coverage.md and perform both directions:
 
 Repair ordinary omissions or distortions before formal audit. Preserve genuine unresolved choices as unresolved; do not guess.
 
+## No unauthorized material acceptance commitments
+
+Convergence may clarify and verify existing requirements; it must not silently create new material product or numerical promises. Trace each material acceptance obligation to (a) explicit current Owner/repository authority, (b) an explicitly delegated material choice within its bounds, or (c) a mathematical consequence rigorously derived from that authority under stated assumptions. Generic permission to fill implementation details is not permission to invent new scientific accuracy or performance targets.
+
+Auditors and the Remediator may propose mathematical identities, derivations, proof obligations, and objectively checkable verification methods for already-authorized behavior. A mathematical claim must state its domain, assumptions and exact-arithmetic versus floating-point interpretation. A theorem about asymptotic convergence does **not** entail any arbitrary finite-grid observed-order threshold.
+
+Do not turn an agent-invented empirical numerical gate into mandatory Frozen acceptance without explicit Owner authority or rigorous entailment: examples include benchmark-specific error cutoffs, observed convergence-rate tolerances, interpolation/transfer budget fractions, efficiency ratios, performance floors, and arbitrary floating-point comparison thresholds. Do not relabel a new substantive commitment as a mere test, estimator, or implementation detail. Unsupported proposed gates may be recorded as non-normative research suggestions, never as hidden must-pass conditions.
+
+If a new material acceptance decision is necessary and is neither already authorized nor rigorously entailed, escalate it via the existing Owner Decision protocol; do not default to a numerical threshold. Mathematical consistency review belongs here. Implementation-dependent numerical experiments, numerical regression studies and dynamic feasibility prototypes belong to Contract-to-Code Convergence after freeze; no new ICC execution stage or subagent is implied. C2C may independently derive tests to verify the **existing** Frozen Contract, but such tests cannot amend it.
 ## Select durable backend
 
 Before the first formal round:
@@ -97,18 +106,16 @@ When the candidate Essence is ready for formal audit:
 2. create or update durable run state and the human-readable audit journal;
 3. have the dispatcher verify the target and prepare checked, allowlisted input packets, then launch fresh independent Auditor slots without inherited conversation;
 4. durably seal raw results; invalidate contaminated executions and retry the same logical slot in a fresh context without reusing observations;
-5. after every required slot has a valid sealed result for the same target, scope and input manifest, run a fresh Reconciler using lossless finding-to-obligation mapping;
-6. durably seal reconciliation and have a separate fresh Reconciliation Verifier check semantic coverage, merge classifications, dispositions and owner authority against all sealed raw findings; on failure repair reconciliation and reverify without altering sealed Auditor results;
-7. conduct bounded independent design deliberation for every material agent-authorized resolution and every proposed owner escalation, preserving alternatives, objections and dissent; do not reopen settled owner decisions;
-8. durably seal verified reconciliation, deliberation and the resulting decision disposition;
-9. follow exactly one transition:
+5. after every required slot has a valid sealed result for the same target, scope and input manifest, run a fresh Reconciler;
+6. durably persist the canonical reconciliation;
+7. follow exactly one transition:
    - PASS -> FREEZE
    - FAIL + no owner decision -> REMEDIATE -> fresh audit
    - FAIL + owner decision -> WAITING_FOR_OWNER
-10. after remediation, establish a new immutable target and audit it from scratch;
-11. stop only at verified FROZEN, WAITING_FOR_OWNER, or a fail-closed execution blocker.
+8. after remediation, establish a new immutable target and audit it from scratch;
+9. stop only at verified FROZEN, WAITING_FOR_OWNER, or a fail-closed execution blocker.
 
-Use references/execution-policy.md for independence and target rules. Read `references/reconciliation-deliberation.md` for the mandatory lossless mapping, independent verification, deliberation, evidence and bounded-retry gates. No PASS, remediation or owner handoff may bypass those gates.
+Use references/execution-policy.md for independence and target rules.
 
 ## Role boundaries
 
@@ -118,7 +125,6 @@ Load the role reference only when that role is active:
 
 - Auditor: references/auditor.md
 - Reconciler: references/reconciler.md
-- Reconciliation Verifier and deliberators: references/reconciliation-deliberation.md
 - Remediator: references/remediator.md
 - Freeze and owner handoff: references/freeze-and-handoff.md
 

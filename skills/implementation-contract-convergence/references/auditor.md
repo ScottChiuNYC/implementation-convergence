@@ -57,6 +57,9 @@ Look especially for:
 
 Do not raise stylistic findings.
 
+## Material acceptance authority check
+
+For each proposed normative acceptance condition, check whether it comes from explicit current authority, bounded Owner delegation, or a stated and rigorous mathematical consequence of existing requirements. An agent-invented empirical numerical threshold, finite-grid convergence cutoff, transfer/error-budget allocation or work-efficiency target cannot become a mandatory gate merely to make the Essence appear complete. Distinguish verification methods for established obligations from new product commitments; a numerical regression result or asymptotic convergence statement does not by itself authorize a finite-grid pass/fail tolerance. Raise a material finding when a new unauthorized obligation is introduced; request an Owner Decision only when existing authority cannot resolve it. Do not demand implementation-dependent numerical experiments as an ICC freeze prerequisite.
 ## Finding schema
 
 For each substantive finding provide:

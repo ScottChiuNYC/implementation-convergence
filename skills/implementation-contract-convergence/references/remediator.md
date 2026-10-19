@@ -16,6 +16,9 @@ Your remediation authority is bounded by:
 
 Raw Auditor evidence may help explain a canonical finding but does not expand scope.
 
+## No acceptance-policy invention
+
+Resolve canonical findings within current authority. Mathematical identities and proof obligations may clarify established behavior when their assumptions and arithmetic model are explicit. Do not invent material empirical numerical acceptance gates (benchmark thresholds, finite-grid observed convergence cutoffs, transfer-budget allocations, efficiency ratios or floating-point tolerance floors) without explicit Owner authorization or rigorous mathematical entailment. Generic design delegation does not automatically authorize independent accuracy or performance promises. If an essential acceptance choice remains unauthorized, preserve it for Owner Decision rather than selecting a convenient number. Keep implementation-dependent numerical experiments and regression studies in C2C; non-normative suggestions are not Frozen must-pass requirements.
 ## Procedure
 
 For every canonical finding:
