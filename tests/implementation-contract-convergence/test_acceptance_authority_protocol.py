@@ -37,6 +37,15 @@ class AcceptanceAuthorityProtocolTests(unittest.TestCase):
         self.assertIn("existing", skill)
         self.assertIn("cannot amend it", skill)
 
+    def test_github_document_only_ci_not_mandatory(self):
+        backend = read("references/backend-github.md")
+        for term in ("documentation-only", "do not run builds/tests",
+                     "do not wait", "automatically triggered",
+                     "repository policy", "required status checks"):
+            self.assertIn(term, backend)
+        self.assertIn("exact-head/diff/readback/merge verification", backend)
+        self.assertIn("never weakens c2c verification", backend)
+
     def test_math_only_icc_no_dynamic_feasibility_prototype(self):
         skill = read("SKILL.md")
         self.assertIn("mathematical consistency review belongs here", skill)

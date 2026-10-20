@@ -79,7 +79,13 @@ Before merge:
 
 After merge, re-read main and record the resulting exact SHA before starting the next formal round.
 
-If repository policy requires CI or publication, verify the exact applicable run to terminal state rather than treating queued or in-progress as completion.
+### CI applicability for contract-only changes
+
+ICC is specification convergence, not solver implementation or numerical experimentation. Do not run builds/tests of application code or manually dispatch CI solely for an ICC audit or document-only freeze. For each PR or freeze writeback, inspect the changed paths and applicable repository policy (including required status checks/rulesets) before deciding that CI is a gate.
+
+When the change is confined to the Target Essence, `ESSENCE_AUDIT.md`, and other ICC control-plane documentation, **CI is not required by this skill**. Unless repository policy explicitly requires the check for those changes, mark the CI gate **not applicable (documentation-only)**, keep the exact-head/diff/readback/merge verification, and **do not wait** for automatically triggered push or pull_request build workflows. The fact that GitHub Actions started a run does not itself create a CI wait requirement.
+
+If repository policy actually requires CI or publication for the change, verify the exact applicable run/publication to terminal state rather than treating queued, skipped, or in-progress as completion. For implementation, build configuration, dependency, and test changes, honor the project's normal CI policy; this exception never weakens C2C verification. If branch protection requires a job skipped by path filtering, treat that as a repository integration blocker; do not bypass protection or claim the missing required check passed.
 
 ## Issue mutation safety
 
