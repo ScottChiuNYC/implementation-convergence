@@ -6,6 +6,12 @@ The repository builds a reviewable PDF from tracked content so the owner can ins
 
 The pipeline is infrastructure only. It must not encode assumptions about either implementation-convergence skill.
 
+This document describes **this repository's retained self-publication pipeline**. It is not the source of truth for ART-generated downstream project workflows. Downstream repositories that use ART obtain their PDF workflow, Docker/GHCR image pin, Google Drive publication behavior, and ART-owned review exclusions from `agentic-repo-template`.
+
+For the broader ownership and change-propagation model, see:
+
+https://github.com/ScottChiuNYC/agentic-repo-template/blob/main/docs/ecosystem-architecture.md
+
 ## Trigger
 
 `.github/workflows/publish-codebinder-pdf.yml` runs on:
