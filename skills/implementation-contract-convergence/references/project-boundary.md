@@ -81,3 +81,7 @@ The Project Boundary must be available from durable repository or workspace auth
 Hidden chat assumptions, remembered local conventions, ambient packages, or an agent's private knowledge do not establish the boundary.
 
 If a required boundary capability is absent, ambiguous, or available only accidentally in one executor environment, stop and repair the durable project authority before freeze.
+
+## Coding conventions in the Project Boundary
+
+When the target repository declares coding conventions, such as Google C++ Style or PEP 8, these are project-local implementation policies. ICC follows them for compilable examples, client code and API declarations without restating them in every Essence. Style is not a new domain requirement, does not by itself block freeze, and must not silently alter public compatibility. Formatter enforcement is not implied.

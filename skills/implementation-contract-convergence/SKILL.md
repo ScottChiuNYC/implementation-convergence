@@ -59,6 +59,10 @@ Before drafting, semantic coverage, remediation, or formal audit, read:
 - `references/project-boundary.md` — what the component may assume is already provided and how to keep boundary-owned mechanics out of Essence scope;
 - `references/incremental-development.md` — whether an incremental change needs no contract change, reopening an existing Essence, or a new Essence.
 
+## Style of generated code and interfaces
+
+When creating code-like material (C++/Python interfaces, class declarations, executable examples or client code), follow the target project's durable coding policy as part of its Project Boundary. No automatic formatter or formatter-only CI is implied; avoid irrelevant reformatting. Cosmetic style alone is not a material ICC finding and must not change domain semantics or published interfaces.
+
 ## Entry: classify, draft, and check semantic coverage
 
 Before drafting or auditing, identify the Project Boundary from current durable repository authority.
